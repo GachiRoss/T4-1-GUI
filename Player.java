@@ -1,7 +1,7 @@
-package sample;
 import java.util.ArrayList;
 import java.util.Scanner;
 import command.*;
+import Room_related.*;
 
 public class Player {
     // The player:

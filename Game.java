@@ -1,4 +1,5 @@
 import command.*;
+import Room_related.*;
 
 public class Game {
     // Der erklæres to variabler
