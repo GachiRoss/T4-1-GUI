@@ -1,4 +1,4 @@
-package sample;
+package Room_related;
 
 public class Trash {
     // Attributter:

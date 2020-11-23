@@ -1,5 +1,4 @@
-package sample;
-import java.util.ArrayList;
+package Room_related;
 
 public class RecyclingCenter extends Room {
     public RecyclingCenter(String description, String name) {

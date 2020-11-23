@@ -1,9 +1,7 @@
-package sample;
+package Room_related;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.ArrayList;
 
 public class Room {
     private String description;
