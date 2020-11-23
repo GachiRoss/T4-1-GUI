@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="58a27f3c-14e2-456b-9729-9abf6e93a6da" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +68,14 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="277" y="359" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1606131902519">
+      <screen x="0" y="22" width="1440" height="839" />
+    </state>
+    <state x="277" y="359" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.22.1440.839@0.22.1440.839" timestamp="1606131902519" />
+    <state x="101" y="167" key="Vcs.Push.Dialog.v2" timestamp="1606131596221">
+      <screen x="0" y="22" width="1440" height="839" />
+    </state>
+    <state x="101" y="167" key="Vcs.Push.Dialog.v2/0.22.1440.839@0.22.1440.839" timestamp="1606131596221" />
     <state x="502" y="212" key="chooseDestDirectoryDialog" timestamp="1606131319188">
       <screen x="0" y="22" width="1440" height="839" />
     </state>
