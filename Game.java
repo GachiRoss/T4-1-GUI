@@ -1,4 +1,4 @@
-package sample;
+import package.command.*;
 
 public class Game {
     // Der erklæres to variabler
