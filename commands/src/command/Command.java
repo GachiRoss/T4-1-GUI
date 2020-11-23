@@ -1,4 +1,4 @@
-package sample;
+package command;
 
 public class Command {
     private CommandWord commandWord;

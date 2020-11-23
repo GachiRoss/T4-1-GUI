@@ -1,4 +1,4 @@
-package sample;
+package command;
 import java.util.HashMap;
 
 public class CommandWords {
