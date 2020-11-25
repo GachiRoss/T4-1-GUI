@@ -10,7 +10,7 @@ public class Room {
     private String name;
     public ArrayList<Trash> trash = new ArrayList<Trash>(5); // creates an ArrayList
     private HashMap<String, Room> exits; //?
-
+    private Trash[][] coordinateSystem;
     private Trash can = new Trash("Metal", "can", 1);
     private Trash battery = new Trash("Hazardous waste", "battery", 2);
     private Trash pizzaBox = new Trash("Residual waste", "pizzaBox", 3);
@@ -25,6 +25,8 @@ public class Room {
         this.description = description;
         this.name = name;
         exits = new HashMap<String, Room>();
+
+        coordinateSystem = new Trash[20][20];
 
         trash.add(battery);
         trash.add(can);
@@ -71,5 +73,13 @@ public class Room {
     public Container[] getContainers() {
         System.out.println("you're not at the Recycling Center, wait til you get there.");
         return null;
+    }
+
+    public Trash[][] getCoordinateSystem() {
+        return coordinateSystem;
+    }
+
+    public void setCoordinateSystem(Trash[][] coordinateSystem) {
+        this.coordinateSystem = coordinateSystem;
     }
 }
