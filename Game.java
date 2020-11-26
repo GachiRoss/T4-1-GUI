@@ -7,6 +7,7 @@ public class Game {
     private static Room currentRoom;
     private Player player;
 
+
     // constructor - kører metode CreateRooms og laver et nyt objekt
     public Game()
     {

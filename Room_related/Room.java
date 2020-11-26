@@ -24,6 +24,8 @@ public class Room {
         this.description = description;
         exits = new HashMap<String, Room>();
 
+        coordinateSystem = new Trash[20][20];
+
         trash.add(battery);
         trash.add(can);
         trash.add(pizzaBox);
@@ -65,5 +67,13 @@ public class Room {
     public Container[] getContainers() {
         System.out.println("you're not at the Recycling Center, wait til you get there.");
         return null;
+    }
+
+    public Trash[][] getCoordinateSystem() {
+        return coordinateSystem;
+    }
+
+    public void setCoordinateSystem(Trash[][] coordinateSystem) {
+        this.coordinateSystem = coordinateSystem;
     }
 }

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import command.*;
 import Room_related.*;
+import org.w3c.dom.events.Event;
 
 public class Player {
     // The player:
@@ -10,6 +11,8 @@ public class Player {
     private Scanner scanner = new Scanner(System.in);
     private int whatContain;
     private Trash trash;
+    private int x;
+    private int y;
 
 
     // The inventory made as an ArrayList with capacity 5
@@ -136,4 +139,35 @@ public class Player {
             System.out.println(Game.getCurrentRoom().trash.get(i).getName());
         }
     }
+
+    public void move(Event event) {
+        switch (event) {
+            case w:
+                y--;
+                break;
+            case s:
+                y++;
+                break;
+            case a:
+                x--;
+                break;
+            case d:
+                x++;
+                break;
+        }
+
+    }
+
+    public void checkIfTrash (Event event) {
+        if (event == space) {
+            if (Game.getCurrentRoom().getCoordinateSystem()[x][y] != null) {
+                Trash trash = Game.getCurrentRoom().getCoordinateSystem()[x][y];
+                inventoryList.add(trash);
+                Trash[][] trashArray = Game.getCurrentRoom().getCoordinateSystem();
+                trashArray[x][y] = null;
+                Game.getCurrentRoom().setCoordinateSystem(trashArray);
+            }
+        }
+    }
+
 }
