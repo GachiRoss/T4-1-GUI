@@ -25,6 +25,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -95,5 +102,9 @@
       <screen x="0" y="22" width="1440" height="839" />
     </state>
     <state x="93" y="22" key="new project wizard/0.22.1440.839@0.22.1440.839" timestamp="1606131232179" />
+    <state x="755" y="184" width="670" height="676" key="search.everywhere.popup" timestamp="1606341099428">
+      <screen x="0" y="22" width="1440" height="838" />
+    </state>
+    <state x="755" y="184" width="670" height="676" key="search.everywhere.popup/0.22.1440.838@0.22.1440.838" timestamp="1606341099428" />
   </component>
 </project>

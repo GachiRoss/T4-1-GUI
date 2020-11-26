@@ -7,23 +7,21 @@ public class Room {
     private String description;
 
     // Trash instance variable:
-    private String name;
     public ArrayList<Trash> trash = new ArrayList<Trash>(5); // creates an ArrayList
     private HashMap<String, Room> exits; //?
 
-    private Trash can = new Trash("Metal", "can", 1);
-    private Trash battery = new Trash("Hazardous waste", "battery", 2);
-    private Trash pizzaBox = new Trash("Residual waste", "pizzaBox", 3);
-    private Trash plasticBag = new Trash("Plastic", "plasticBag", 4);
-    private Trash porcelainPlate = new Trash("Hazardous waste", "porcelainPlate", 2);
+    private Trash can = new Trash("Metal", "can", TrashType.METAL);
+    private Trash battery = new Trash("Hazardous waste", "battery", TrashType.HAZARDOUSWASTE);
+    private Trash pizzaBox = new Trash("Residual waste", "pizzaBox", TrashType.RESIDUALWASTE);
+    private Trash plasticBag = new Trash("Plastic", "plasticBag", TrashType.PLASTIC);
+    private Trash porcelainPlate = new Trash("Hazardous waste", "porcelainPlate", TrashType.HAZARDOUSWASTE);
 
     // Constructor: adds trash objects of Trash to ArrayList trash
 
 
-    public Room(String description, String name)
+    public Room(String description)
     {
         this.description = description;
-        this.name = name;
         exits = new HashMap<String, Room>();
 
         trash.add(battery);
@@ -62,10 +60,6 @@ public class Room {
     public Room getExit(String direction)
     {
         return exits.get(direction);
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Container[] getContainers() {
