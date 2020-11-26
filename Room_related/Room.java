@@ -27,7 +27,7 @@ public class Room {
 
         coordinateSystem = new Trash[20][20];
 
-        trash.add(battery);
+        coordinateSystem[10][10] = battery;
         trash.add(can);
         trash.add(pizzaBox);
         trash.add(plasticBag);

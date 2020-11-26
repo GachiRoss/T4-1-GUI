@@ -5,7 +5,7 @@ public class Game {
     // Der erklæres to variabler
     private Parser parser;
     private static Room currentRoom;
-    private Player player;
+    private static Player player;
 
 
     // constructor - kører metode CreateRooms og laver et nyt objekt
@@ -199,4 +199,9 @@ public class Game {
             System.out.println("you're not at the Recycling Center, wait til you get there.");
         }
     }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
 }

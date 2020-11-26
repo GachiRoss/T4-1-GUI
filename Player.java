@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import command.*;
 import Room_related.*;
+import javafx.scene.input.KeyEvent;
 import org.w3c.dom.events.Event;
 
 public class Player {
@@ -36,12 +37,11 @@ public class Player {
 
 
     //Methods
-    public void pickUp (Command command) {
+    public void pickUp(Command command) {
         // check if there is a second word in command
-        if (!command.hasSecondWord()){
+        if (!command.hasSecondWord()) {
             System.out.println("Missing second word...");
-        }
-        else {
+        } else {
             String trash = command.getSecondWord();
             trash.toLowerCase();
             int trashIndex = -1;
@@ -76,12 +76,11 @@ public class Player {
     }
 
     public void inspectItem(Command command) {
-        if (command.hasSecondWord() == true){
+        if (command.hasSecondWord() == true) {
             int index = Integer.parseInt(command.getSecondWord()) - 1;
             Trash trash = inventoryList.get(index);
             System.out.println("The name of the item is \"" + trash.getName() + "\", which means it should be sorted with " + trash.getMaterial());
-        }
-        else {
+        } else {
             System.out.println("Check what item?!");
         }
     }
@@ -91,8 +90,7 @@ public class Player {
         //method checks if player is in reCenter
         if (Game.getCurrentRoom() instanceof RecyclingCenter == false) {
             System.out.println("Go to the Recycling Center to do this");
-        }
-        else {
+        } else {
             //checks if the command has a second word (index number)
             if (!command.hasSecondWord()) {
                 System.out.println("Drop what?");
@@ -104,8 +102,7 @@ public class Player {
                 //make sure the player cant access numbers outside the inventory size
                 if (index > inventoryList.size() || index < 0) {
                     System.out.println("You do not have an item there");
-                }
-                else {
+                } else {
                     //quick guide to what the scanner wants
                     System.out.println("What Container do you want to drop it in?");
                     System.out.println("1: metal, 2: Hazardous waste, 3: Residual waste, 4: Plastic");
@@ -125,12 +122,13 @@ public class Player {
     }
 
     private void givePoints() {
-            RecyclingCenter currentRoom = (RecyclingCenter) Game.getCurrentRoom();
-            points += Game.getCurrentRoom().getContainers()[whatContain].checkRecycling(trash);
-            whatContain = 0;
-            System.out.println("You got " + points + " point(s) in total!");
+        RecyclingCenter currentRoom = (RecyclingCenter) Game.getCurrentRoom();
+        points += Game.getCurrentRoom().getContainers()[whatContain].checkRecycling(trash);
+        whatContain = 0;
+        System.out.println("You got " + points + " point(s) in total!");
 
     }
+
     //method for allowing the player to search for trash in a room
     public void search() {
         //uses a for loop to iterate through the trash arraylist for the current room. Calls the getCurrentRoom method from the Game class
@@ -140,34 +138,44 @@ public class Player {
         }
     }
 
-    public void move(Event event) {
-        switch (event) {
-            case w:
+    public void keyPressed(KeyEvent key) {
+        switch (key.getCode().toString()) {
+            case "W":
                 y--;
                 break;
-            case s:
+            case "S":
                 y++;
                 break;
-            case a:
+            case "A":
                 x--;
                 break;
-            case d:
+            case "D":
                 x++;
                 break;
+            case "F":
+                if (Game.getCurrentRoom().getCoordinateSystem()[x][y] != null) {
+                    Trash trash = Game.getCurrentRoom().getCoordinateSystem()[x][y];
+                    inventoryList.add(trash);
+                    Trash[][] trashArray = Game.getCurrentRoom().getCoordinateSystem();
+                    trashArray[x][y] = null;
+                    Game.getCurrentRoom().setCoordinateSystem(trashArray);
+                }
+                for (int i = 0; i < inventoryList.size(); i++) {
+                    // Prints out a description of the inventory list
+                    System.out.println("Slot " + (i + 1) + ": " + inventoryList.get(i).getName());
+                }
+                System.out.println();
+                break;
         }
+        System.out.println(x + ", " + y);
 
     }
 
-    public void checkIfTrash (Event event) {
-        if (event == space) {
-            if (Game.getCurrentRoom().getCoordinateSystem()[x][y] != null) {
-                Trash trash = Game.getCurrentRoom().getCoordinateSystem()[x][y];
-                inventoryList.add(trash);
-                Trash[][] trashArray = Game.getCurrentRoom().getCoordinateSystem();
-                trashArray[x][y] = null;
-                Game.getCurrentRoom().setCoordinateSystem(trashArray);
-            }
-        }
+    public int getX() {
+        return x;
     }
 
+    public int getY() {
+        return y;
+    }
 }
