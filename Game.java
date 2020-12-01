@@ -17,26 +17,26 @@ public class Game {
     // metode
     private void createRooms()
     {
-        Room park, beach, street, conSite, foodTruck, home, reCenter;
+        Room park, beach, street, conSite, forest, home, reCenter;
         // rum dannes som objekter
         park = new Room("You've reached the park... refreshing.");
         beach = new Room("You've reached the beach. Lots of sand... everywhere!");
         street = new Room("You're walking through the street. Ahh the sweet smell of... pollution?");
         conSite = new Room("At a construction site. Construction will eventually resume at an unspecified time in the future.");
-        foodTruck = new Room("You've reached the food truck. Everyone's favourite place to be!");
+        forest = new Room("You've reached the forest. Everyone's favourite place to be!");
         home = new Room("You're at home. Smells kinda funny in here.");
         reCenter = new RecyclingCenter("You're at the recycling center. The place where you... well... SORT YOUR TRASH!!");
 
         //exits til rummene erklæres via metoden setExit
-        home.setExit("south", foodTruck);
+        home.setExit("south", forest);
 
-        foodTruck.setExit("north", home);
-        foodTruck.setExit("east", conSite);
-        foodTruck.setExit("west", street);
+        forest.setExit("north", home);
+        forest.setExit("east", conSite);
+        forest.setExit("west", street);
 
-        conSite.setExit("west", foodTruck);
+        conSite.setExit("west", forest);
 
-        street.setExit("east", foodTruck);
+        street.setExit("east", forest);
         street.setExit("west", beach);
         street.setExit("south", park);
         street.setExit("north", reCenter);
@@ -45,9 +45,13 @@ public class Game {
 
         park.setExit("north", street);
 
+
         reCenter.setExit("south", street);
 
         currentRoom = home;
+
+
+
     }
 
     //ny metode

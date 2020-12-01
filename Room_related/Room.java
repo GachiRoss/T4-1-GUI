@@ -17,6 +17,7 @@ public class Room {
     private Trash plasticBag = new Trash("Plastic", "plasticBag", TrashType.PLASTIC);
     private Trash porcelainPlate = new Trash("Hazardous waste", "porcelainPlate", TrashType.HAZARDOUSWASTE);
 
+
     // Constructor: adds trash objects of Trash to ArrayList trash
 
 
@@ -28,6 +29,12 @@ public class Room {
         coordinateSystem = new Trash[20][20];
 
         coordinateSystem[10][10] = battery;
+        coordinateSystem[5][5] = can;
+        coordinateSystem[7][8] = pizzaBox;
+        coordinateSystem[3][20] = plasticBag;
+        coordinateSystem[20][20] = porcelainPlate;
+
+        trash.add(battery);
         trash.add(can);
         trash.add(pizzaBox);
         trash.add(plasticBag);
