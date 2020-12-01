@@ -9,7 +9,7 @@ public class Room {
     // Trash instance variable:
     public ArrayList<Trash> trash = new ArrayList<Trash>(5); // creates an ArrayList
     private HashMap<String, Room> exits; //?
-    private Trash [][] coordinateSystem;
+    private Object [][] coordinateSystem;
 
     private Trash can = new Trash("Metal", "can", TrashType.METAL);
     private Trash battery = new Trash("Hazardous waste", "battery", TrashType.HAZARDOUSWASTE);
@@ -77,11 +77,11 @@ public class Room {
         return null;
     }
 
-    public Trash[][] getCoordinateSystem() {
+    public Object[][] getCoordinateSystem() {
         return coordinateSystem;
     }
 
-    public void setCoordinateSystem(Trash[][] coordinateSystem) {
+    public void setCoordinateSystem(Object[][] coordinateSystem) {
         this.coordinateSystem = coordinateSystem;
     }
 }

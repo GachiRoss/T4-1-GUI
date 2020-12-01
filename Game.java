@@ -101,9 +101,12 @@ public class Game {
         else if (commandWord == CommandWord.INSPECTITEM) {
             player.inspectItem(command);
         }
+        /*
         else if (commandWord == CommandWord.PICKUP) {
             player.pickUp(command);
         }
+
+         */
         else if (commandWord == CommandWord.OPENINVENTORY) {
             player.openInventory(command);
         }
@@ -118,6 +121,8 @@ public class Game {
         }
         return wantToQuit;
     }
+
+
 
     private void printHelp() {
         System.out.println("You are lost. You are alone. You wander");

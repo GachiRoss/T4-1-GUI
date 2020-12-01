@@ -2,8 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import command.*;
 import Room_related.*;
-import javafx.scene.input.KeyEvent;
-import org.w3c.dom.events.Event;
+import javafx.scene.control.ListView;
 
 public class Player {
     // The player:
@@ -37,28 +36,17 @@ public class Player {
 
 
     //Methods
-    public void pickUp(Command command) {
-        // check if there is a second word in command
-        if (!command.hasSecondWord()) {
-            System.out.println("Missing second word...");
-        } else {
-            String trash = command.getSecondWord();
-            trash.toLowerCase();
-            int trashIndex = -1;
-            for (int i = 0; i < Game.getCurrentRoom().trash.size(); i++) {
-                if (Game.getCurrentRoom().trash.get(i).getName().equals(trash)) {
-                    trashIndex = i;
-                }
-            }
-            if (trashIndex < 0) {
-                System.out.println("That piece of trash is not here!!");
-            } else {
-                Trash newTrash = Game.getCurrentRoom().trash.get(trashIndex);     // An object of trash is created temporarily called newTrash
-                inventoryList.add(newTrash);
-                Game.getCurrentRoom().trash.remove(trashIndex);
-                System.out.println(trash + " has been added to inventory!");
-            }
+    public String pickUp() {
+        if (Game.getCurrentRoom().getCoordinateSystem()[x][y] instanceof Trash) {
+            Object[][] roomArray = Game.getCurrentRoom().getCoordinateSystem();
+            Trash trash = (Trash)roomArray[x][y];
+            inventoryList.add(trash);
+            roomArray[x][y] = null;
+            Game.getCurrentRoom().setCoordinateSystem(roomArray);
+            String item = "Slot " + (inventoryList.indexOf(trash) +1) + ": " + trash.getName();
+            return item;
         }
+        return null;
     }
 
     public void openInventory(Command command) {
@@ -138,44 +126,23 @@ public class Player {
         }
     }
 
-    public void keyPressed(KeyEvent key) {
-        switch (key.getCode().toString()) {
-            case "W":
-                y--;
-                break;
-            case "S":
-                y++;
-                break;
-            case "A":
-                x--;
-                break;
-            case "D":
-                x++;
-                break;
-            case "F":
-                if (Game.getCurrentRoom().getCoordinateSystem()[x][y] != null) {
-                    Trash trash = Game.getCurrentRoom().getCoordinateSystem()[x][y];
-                    inventoryList.add(trash);
-                    Trash[][] trashArray = Game.getCurrentRoom().getCoordinateSystem();
-                    trashArray[x][y] = null;
-                    Game.getCurrentRoom().setCoordinateSystem(trashArray);
-                }
-                for (int i = 0; i < inventoryList.size(); i++) {
-                    // Prints out a description of the inventory list
-                    System.out.println("Slot " + (i + 1) + ": " + inventoryList.get(i).getName());
-                }
-                System.out.println();
-                break;
-        }
-        System.out.println(x + ", " + y);
-
-    }
-
     public int getX() {
         return x;
     }
 
     public int getY() {
         return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public ArrayList<Trash> getInventoryList() {
+        return inventoryList;
     }
 }
