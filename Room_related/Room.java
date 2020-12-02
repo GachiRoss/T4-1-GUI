@@ -11,11 +11,11 @@ public class Room {
     private HashMap<String, Room> exits; //?
     private Object [][] coordinateSystem;
 
-    private Trash can = new Trash("Metal", "can", TrashType.METAL);
+    /*private Trash can = new Trash("Metal", "can", TrashType.METAL);
     private Trash battery = new Trash("Hazardous waste", "battery", TrashType.HAZARDOUSWASTE);
     private Trash pizzaBox = new Trash("Residual waste", "pizzaBox", TrashType.RESIDUALWASTE);
     private Trash plasticBag = new Trash("Plastic", "plasticBag", TrashType.PLASTIC);
-    private Trash porcelainPlate = new Trash("Hazardous waste", "porcelainPlate", TrashType.HAZARDOUSWASTE);
+    private Trash porcelainPlate = new Trash("Hazardous waste", "porcelainPlate", TrashType.HAZARDOUSWASTE);*/
 
 
     // Constructor: adds trash objects of Trash to ArrayList trash
@@ -26,9 +26,9 @@ public class Room {
         this.description = description;
         exits = new HashMap<String, Room>();
 
-        coordinateSystem = new Trash[20][20];
+        coordinateSystem = new Trash[29][29];
 
-        coordinateSystem[10][10] = battery;
+        /*coordinateSystem[10][10] = battery;
         coordinateSystem[5][5] = can;
         coordinateSystem[7][8] = pizzaBox;
         coordinateSystem[3][20] = plasticBag;
@@ -38,7 +38,7 @@ public class Room {
         trash.add(can);
         trash.add(pizzaBox);
         trash.add(plasticBag);
-        trash.add(porcelainPlate);
+        trash.add(porcelainPlate);*/
 
     }
 

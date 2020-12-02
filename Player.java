@@ -63,7 +63,7 @@ public class Player {
         System.out.println();
     }
 
-    public void inspectItem(Command command) {
+    /*public void inspectItem(Command command) {
         if (command.hasSecondWord() == true) {
             int index = Integer.parseInt(command.getSecondWord()) - 1;
             Trash trash = inventoryList.get(index);
@@ -71,7 +71,7 @@ public class Player {
         } else {
             System.out.println("Check what item?!");
         }
-    }
+    }*/
 
     //method for dropping items in the containers
     public void dropItem(Command command) {

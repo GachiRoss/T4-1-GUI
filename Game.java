@@ -1,11 +1,14 @@
 import command.*;
 import Room_related.*;
 
+import java.util.Random;
+
 public class Game {
     // Der erklæres to variabler
     private Parser parser;
     private static Room currentRoom;
     private static Player player;
+    private static Random random = new Random();
 
 
     // constructor - kører metode CreateRooms og laver et nyt objekt
@@ -54,6 +57,54 @@ public class Game {
 
     }
 
+    public static void createTrash(Room room){
+        // if statement der tjekker om man er på koordinater, hvor spilleren ikke kan gå hen
+
+        // for loop med math.random til at oprette trash objekter tilfældigt i koordinatsystemet for hvert room
+        for(int i = 0; i < 5; i++){
+
+            Trash trash;
+            String[][] trashArray = {{"can","aluminium foil"},{"battery", "syringe"},{"pizza box", "milk carton"},{"plastic bag", "plastic bottle"}};
+            
+            int x = random.nextInt(29);
+            int y = random.nextInt(29);
+
+            int type = random.nextInt(4);
+            int name = random.nextInt(trashArray[type].length);
+
+
+            if (type < 4 && trashArray[type].length >= name) {
+                TrashType trashType;
+                switch (type) {
+                    case 0:
+                        trashType = TrashType.METAL;
+                        break;
+                    case 1:
+                        trashType = TrashType.HAZARDOUSWASTE;
+                        break;
+                    case 2:
+                        trashType = TrashType.RESIDUALWASTE;
+                        break;
+                    case 3:
+                        trashType = TrashType.PLASTIC;
+                        break;
+
+                    default:
+                        trashType = TrashType.METAL;
+                }
+                trash = new Trash(trashArray[type][name], trashType);
+
+                if (room.getCoordinateSystem()[x][y] == null) {
+                    Object[][] newCoordinateSystem = room.getCoordinateSystem();
+                    newCoordinateSystem[x][y] = trash;
+
+                    room.setCoordinateSystem(newCoordinateSystem);
+                }
+                System.out.println(trash.getName());
+            }
+        }
+    }
+
     //ny metode
     public void play() {
         int finished = 1;
@@ -99,7 +150,7 @@ public class Game {
             wantToQuit = quit(command);
         }
         else if (commandWord == CommandWord.INSPECTITEM) {
-            player.inspectItem(command);
+            /*player.inspectItem(command);*/
         }
         /*
         else if (commandWord == CommandWord.PICKUP) {

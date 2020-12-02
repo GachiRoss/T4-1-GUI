@@ -2,15 +2,19 @@ package Room_related;
 
 public class Trash {
     // Attributter:
-    private String material;
+    /*private String material;*/
     private String name;
     private TrashType trashType;
+    /*private int x;
+    private int y;*/
 
     // Constructor: objects (trash) are made here
-    Trash (String material, String name, TrashType trashType){
-        this.material = material;
+    public Trash (/*String material,*/ String name, TrashType trashType/*, int x, int y*/){
+        /*this.material = material;*/
         this.name = name;
         this.trashType = trashType;
+        /*this.x = x;
+        this.y = y;*/
         // without constructor here we can't create trash objects in Room
     }
 
@@ -23,7 +27,15 @@ public class Trash {
         return trashType;
     }
 
-    public String getMaterial() {
+    /*public String getMaterial() {
         return material;
+    }*/
+
+    /*public int getX() {
+        return x;
     }
+
+    public int getY() {
+        return y;
+    }*/
 }
