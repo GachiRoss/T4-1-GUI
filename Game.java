@@ -51,7 +51,7 @@ public class Game {
 
         reCenter.setExit("south", street);
 
-        currentRoom = home;
+        currentRoom = reCenter;
 
 
 
@@ -99,6 +99,9 @@ public class Game {
                     newCoordinateSystem[x][y] = trash;
 
                     room.setCoordinateSystem(newCoordinateSystem);
+                }
+                else {
+                    i--;
                 }
                 System.out.println(trash.getName());
             }
@@ -165,7 +168,7 @@ public class Game {
             player.search();
         }
         else if (commandWord == CommandWord.DROP) {
-            player.dropItem(command);
+            //player.dropItem(command);
         }
         else if (commandWord == CommandWord.HANDBOOK) {
             handbook();

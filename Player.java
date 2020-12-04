@@ -74,47 +74,32 @@ public class Player {
     }*/
 
     //method for dropping items in the containers
-    public void dropItem(Command command) {
-        //method checks if player is in reCenter
-        if (Game.getCurrentRoom() instanceof RecyclingCenter == false) {
-            System.out.println("Go to the Recycling Center to do this");
-        } else {
-            //checks if the command has a second word (index number)
-            if (!command.hasSecondWord()) {
-                System.out.println("Drop what?");
-            } else {
-                //takes the index from the second word and casts it from string to int
-                int index = Integer.parseInt(command.getSecondWord());
-                //decrements index to make it easier for people who dont know about index 0
-                index--;
-                //make sure the player cant access numbers outside the inventory size
-                if (index > inventoryList.size() || index < 0) {
-                    System.out.println("You do not have an item there");
-                } else {
-                    //quick guide to what the scanner wants
-                    System.out.println("What Container do you want to drop it in?");
-                    System.out.println("1: metal, 2: Hazardous waste, 3: Residual waste, 4: Plastic");
-                    System.out.print("> ");
-                    //scanner and a secondary function in assisting the givePoints method
-                    whatContain = scanner.nextInt() - 1;
-                    //finds the trash chosen by the index number
-                    Trash trash = inventoryList.get(index);
-                    //removes the chosen index from the inventory
-                    inventoryList.remove(index);
-                    //assigns the trash a variable for use in the givePoints method
-                    this.trash = trash;
-                    givePoints();
-                }
+    public ListView dropItem(ListView listView) {
+
+        Object container = Game.getCurrentRoom().getCoordinateSystem()[x][y - 1];
+        Trash dropTrash = null;
+        for(Trash trash: inventoryList) {
+            String item = "[" + "Slot " + (inventoryList.indexOf(trash) + 1) + ": " + trash.getName() + "]";
+            if (item.equals(listView.getSelectionModel().getSelectedItems().toString())) {
+                dropTrash = trash;
             }
         }
+        if (Game.getCurrentRoom() instanceof RecyclingCenter && container instanceof Container && dropTrash != null) {
+            givePoints((Container) container, dropTrash);
+            inventoryList.remove(dropTrash);
+            listView.getItems().removeAll();
+            for (Trash trash : inventoryList) {
+                String item = "Slot " + (inventoryList.indexOf(trash) +1) + ": " + trash.getName();
+                listView.getItems().add(item);
+            }
+            return listView;
+        }
+        return null;
     }
 
-    private void givePoints() {
-        RecyclingCenter currentRoom = (RecyclingCenter) Game.getCurrentRoom();
-        points += Game.getCurrentRoom().getContainers()[whatContain].checkRecycling(trash);
-        whatContain = 0;
+    private void givePoints(Room_related.Container container, Trash trash) {
+        points += container.checkRecycling(trash);
         System.out.println("You got " + points + " point(s) in total!");
-
     }
 
     //method for allowing the player to search for trash in a room

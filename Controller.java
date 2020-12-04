@@ -30,6 +30,13 @@ public class Controller {
                 if (Game.getPlayer().getInventoryList().size() < 5)
                     inventory.getItems().add(Game.getPlayer().pickUp());
                 break;
+            case "G":
+                //skraldet bliver ved med at være der
+                ListView listView = Game.getPlayer().dropItem(inventory);
+                if (listView != null) {
+                    inventory = listView;
+                }
+                break;
         }
         System.out.println(Game.getPlayer().getX() + ", " + Game.getPlayer().getY());
     }

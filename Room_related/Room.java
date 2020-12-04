@@ -9,13 +9,13 @@ public class Room {
     // Trash instance variable:
     public ArrayList<Trash> trash = new ArrayList<Trash>(5); // creates an ArrayList
     private HashMap<String, Room> exits; //?
-    private Object [][] coordinateSystem;
+    private Object[][] coordinateSystem;
 
-    /*private Trash can = new Trash("Metal", "can", TrashType.METAL);
-    private Trash battery = new Trash("Hazardous waste", "battery", TrashType.HAZARDOUSWASTE);
-    private Trash pizzaBox = new Trash("Residual waste", "pizzaBox", TrashType.RESIDUALWASTE);
-    private Trash plasticBag = new Trash("Plastic", "plasticBag", TrashType.PLASTIC);
-    private Trash porcelainPlate = new Trash("Hazardous waste", "porcelainPlate", TrashType.HAZARDOUSWASTE);*/
+    private Trash can = new Trash( "can", TrashType.METAL);
+    private Trash battery = new Trash( "battery", TrashType.HAZARDOUSWASTE);
+    private Trash pizzaBox = new Trash( "pizzaBox", TrashType.RESIDUALWASTE);
+    private Trash plasticBag = new Trash( "plasticBag", TrashType.PLASTIC);
+    private Trash porcelainPlate = new Trash( "porcelainPlate", TrashType.HAZARDOUSWASTE);
 
 
     // Constructor: adds trash objects of Trash to ArrayList trash
@@ -26,19 +26,14 @@ public class Room {
         this.description = description;
         exits = new HashMap<String, Room>();
 
-        coordinateSystem = new Trash[29][29];
+        coordinateSystem = new Object[29][29];
 
-        /*coordinateSystem[10][10] = battery;
+        coordinateSystem[10][10] = battery;
         coordinateSystem[5][5] = can;
         coordinateSystem[7][8] = pizzaBox;
         coordinateSystem[3][20] = plasticBag;
         coordinateSystem[20][20] = porcelainPlate;
 
-        trash.add(battery);
-        trash.add(can);
-        trash.add(pizzaBox);
-        trash.add(plasticBag);
-        trash.add(porcelainPlate);*/
 
     }
 
