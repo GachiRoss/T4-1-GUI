@@ -16,7 +16,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         Game game = new Game();
         game.play();
-        Game.createTrash(Game.getCurrentRoom());
         launch(args);
     }
 }

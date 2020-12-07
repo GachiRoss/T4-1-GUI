@@ -1,14 +1,22 @@
 import javafx.fxml.FXML;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
-
+import javafx.scene.input.MouseEvent;
 
 
 public class Controller {
 
     @FXML
     private ListView inventory;
+
+    @FXML
+    private TextArea textArea;
+
+    @FXML
+    private Button handbook;
 
 
     @FXML
@@ -39,6 +47,11 @@ public class Controller {
                 break;
         }
         System.out.println(Game.getPlayer().getX() + ", " + Game.getPlayer().getY());
+    }
+
+    @FXML
+    void printHandbook(MouseEvent event) {
+
     }
 }
 
