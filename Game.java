@@ -97,7 +97,7 @@ public class Game {
         }
 
         if (commandWord == CommandWord.HELP) {
-            printHelp();
+            //printHelp();
         } else if (commandWord == CommandWord.GO) {
             goRoom(command);
         } else if (commandWord == commandWord.RESTART) {
@@ -123,23 +123,13 @@ public class Game {
         else if (commandWord == CommandWord.DROP) {
             //player.dropItem(command);
         }
+        /*
         else if (commandWord == CommandWord.HANDBOOK) {
             handbook();
         }
+
+         */
         return wantToQuit;
-    }
-
-
-
-    private void printHelp() {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
-        System.out.println("Your command words are:");
-        parser.showCommands();
-        System.out.println("Important note: ");
-        System.out.println("When referring to something in the room, use the name of the item.");
-        System.out.println("However, if you're referring to something in your inventory, use the index of the slot it is stored in.");
     }
 
     private void goRoom(Command command) {
@@ -182,42 +172,17 @@ public class Game {
         return currentRoom;
     }
 
-    private void handbook (){
-        if (currentRoom instanceof RecyclingCenter){
-            System.out.println("Plastic---------------------------------------------------- ");
-            System.out.println("Plastic trash is made out of plastic. Plastic trash could end up\n" +
-                    "in landfills, it could get incinerated or get reused. \n" +
-                    "Plastic trash examples:\n" +
-                    "Plastic bottles, plastic cutlery, plastic toys etc.");
-            System.out.println("Metal--------------------------------------------------");
-            System.out.println("Trash containing Metal have to be disposed in the Metal Container.\n" +
-                    "Even though a lot of energi is used to reuse metal, it still won't\n" +
-                    "use as much energi as it takes to extract metal.\n" +
-                    "Metal trash examples:\n" +
-                    "Metal cans, metal bowls for animals, metal cutlery etc.");
-            System.out.println("Harzardous Waste----------------------------------------------");
-            System.out.println("Hazardous Waste can't be disposed alongside regular trash since it-\n" +
-                    "might contain something harmful for either the environment or-\n" +
-                    "the people handling the trash. If a product is labelled with:\n" +
-                    "WARNING, CAUTION, FLAMMABLE, TOXIC, CORROSIVE or EXPLOSIVE it should\n" +
-                    "be thrown out with Hazardous Waste.\n" +
-                    "Hazardous Waste examples:\n" +
-                    "porcelain plate , battery, deodorants, paint etc.");
-            System.out.println("Residual Waste--------------------------------------------------");
-            System.out.println("In Denmark Residual Waste gets burned to create electricity.\n" +
-                    "Residual waste is the leftover trash after sorting out -\n" +
-                    "reusable trash such as Plastic, Metal and sorting out-\n" +
-                    "Hazardous Waste.\n" +
-                    "Residual Waste examples:\n" +
-                    "Pizzabox, diapers, vacuum bags, milk og juiceboxes etc.");
-        }
-        else {
-            System.out.println("you're not at the Recycling Center, wait til you get there.");
-        }
-    }
-
     public static Player getPlayer() {
         return player;
+    }
+
+    public static String getHelp() {
+        String string = "Welcome to the world of TRASH! \n" +
+                "A trash collecting/sorting game \n" +
+                "You can walk around the world using \"W, A, S, D\"\n" +
+                "And collect trash using the \"F\" key, and sort it at a container using the \"G\" key \n" +
+                "You get a point by sorting the trash correctly, but lose one if you sort it incorrectly \n";
+        return string;
     }
 
 }

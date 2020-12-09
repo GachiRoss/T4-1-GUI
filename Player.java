@@ -92,9 +92,8 @@ public class Player {
                 String item = "Slot " + (inventoryList.indexOf(trash) +1) + ": " + trash.getName();
                 listView.getItems().add(item);
             }
-            return listView;
         }
-        return null;
+        return listView;
     }
 
     private void givePoints(Room_related.Container container, Trash trash) {
@@ -129,5 +128,35 @@ public class Player {
 
     public ArrayList<Trash> getInventoryList() {
         return inventoryList;
+    }
+
+    public String getHandbook (){
+        String string = "Plastic---------------------------------------------------- \n" +
+                "Plastic trash is made out of plastic. Plastic trash could end up\n" +
+                "in landfills, it could get incinerated or get reused. \n" +
+                "Plastic trash examples:\n" +
+                "Plastic bottles, plastic cutlery, plastic toys etc. \n" +
+                "Metal-------------------------------------------------- \n" +
+                "Trash containing Metal have to be disposed in the Metal Container.\n" +
+                "Even though a lot of energi is used to reuse metal, it still won't\n" +
+                "use as much energi as it takes to extract metal.\n" +
+                "Metal trash examples:\n" +
+                "Metal cans, metal bowls for animals, metal cutlery etc. \n" +
+                "Harzardous Waste---------------------------------------------- \n" +
+                "Hazardous Waste can't be disposed alongside regular trash since it-\n" +
+                "might contain something harmful for either the environment or-\n" +
+                "the people handling the trash. If a product is labelled with:\n" +
+                "WARNING, CAUTION, FLAMMABLE, TOXIC, CORROSIVE or EXPLOSIVE it should\n" +
+                "be thrown out with Hazardous Waste.\n" +
+                "Hazardous Waste examples:\n" +
+                "porcelain plate , battery, deodorants, paint etc. \n" +
+                "Residual Waste-------------------------------------------------- \n" +
+                "In Denmark Residual Waste gets burned to create electricity.\n" +
+                "Residual waste is the leftover trash after sorting out -\n" +
+                "reusable trash such as Plastic, Metal and sorting out-\n" +
+                "Hazardous Waste.\n" +
+                "Residual Waste examples:\n" +
+                "Pizzabox, diapers, vacuum bags, milk og juiceboxes etc. \n";
+        return string;
     }
 }
