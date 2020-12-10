@@ -19,15 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a27f3c-14e2-456b-9729-9abf6e93a6da" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Room_related/ChangeObjekt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Room_related/MapObjekt.java" beforeDir="false" afterPath="$PROJECT_DIR$/Room_related/MapObjekt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/T4-1-GUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/T4-1-GUI.iml" afterDir="false" />
-    </list>
+    <list default="true" id="58a27f3c-14e2-456b-9729-9abf6e93a6da" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

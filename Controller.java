@@ -95,10 +95,6 @@ public class Controller {
                 //skraldet bliver ved med at være der
                 game.getPlayer().dropItem(inventory, game.getCurrentRoom());
                 break;
-            case "C":
-                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()] == ChangeObjekt.SCENECHANGER) {
-                    parkScene(KeyEvent key);
-                }
         }
     }
 
