@@ -96,6 +96,7 @@ public class Controller {
                 window.show();
         }
     }
+    if (ImageView)
 
 
     @FXML
