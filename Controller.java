@@ -42,8 +42,8 @@ public class Controller {
     @FXML
     private ImageView player;
 
-    @FXML
-    private ImageView parkScene = new ImageView("park.jpg");
+    //@FXML
+    //private ImageView parkScene = new ImageView("park.jpg");
 
     public Controller() {
         game.play("bob");
@@ -94,10 +94,25 @@ public class Controller {
                 Stage window = (Stage) ((Node) key.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
+                break;
+            case "H":
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(ChangeObjekt.SCENECHANGER));
+                ImageView street = new ImageView();
+                street.setImage(new Image("street.jpg"));
+                ImageView park = new ImageView();
+                park.setImage(new Image("park.jpg"));
+                ImageView recCenter = new ImageView();
+                recCenter.setImage(new Image("recCenter.jpg"));
+                ImageView beach = new ImageView();
+                beach.setImage(new Image("beach.jpg"));
+                ImageView forest = new ImageView();
+                forest.setImage(new Image("forest.jpg"));
+                ImageView home = new ImageView();
+                home.setImage(new Image("home.jpg"));
+                ImageView conCenter = new ImageView();
+                conCenter.setImage(new Image("conCenter.jpg"));
         }
     }
-    if (ImageView)
-
 
     @FXML
     void printHandbook(MouseEvent event) {
