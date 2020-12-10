@@ -75,11 +75,6 @@ public class Room {
         return exits.get(direction);
     }
 
-    public Container[] getContainers() {
-        System.out.println("you're not at the Recycling Center, wait til you get there.");
-        return null;
-    }
-
     public Object[][] getCoordinateSystem() {
         return coordinateSystem;
     }

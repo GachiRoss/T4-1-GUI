@@ -1,13 +1,15 @@
 import command.*;
 import Room_related.*;
+import javafx.scene.control.TextArea;
 
 import java.util.Random;
 
 public class Game {
     // Der erklæres to variabler
     private Parser parser;
-    private static Room currentRoom;
-    private static Player player;
+    private Room currentRoom;
+    private Player player;
+    private boolean wantsToRestart = false;
 
 
     // constructor - kører metode CreateRooms og laver et nyt objekt
@@ -57,33 +59,25 @@ public class Game {
         street.createTrash();
         park.createTrash();
 
-        currentRoom = reCenter;
+        currentRoom = home;
     }
 
 
     //ny metode
-    public void play() {
-        int finished = 1;
-        while (finished == 1) {
-            createRooms();
-            printWelcome();
-            player = new Player("tobber00");
-            finished = 0;
-            while (finished == 0) {
-                Command command = parser.getCommand();
-                finished = processCommand(command);
-            }
-        }
-        System.out.println("Thank you for playing.  Good bye.");
+    public void play(String name) {
+        player = new Player(name);
+        createRooms();
     }
 
-    private void printWelcome() {
-        System.out.println();
-        System.out.println("Welcome to the World of TRASH!");
-        System.out.println("World of TRASH is a new, incredibly cool trash sorting game!");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
-        System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+    public String getWelcomeText() {
+        String string = "Welcome to the World of TRASH!\n" +
+                "World of TRASH is a new, incredibly cool trash sorting game!\n" +
+                "Your mission is to walk around the world and collect TRASH!\n" +
+                "Yeah i know, it sounds absolutely amazing doesn't it\n" +
+                "Oh yeah, and by the way, you get points depending on your sorting skills!\n" +
+                "If you need more information about how to play the game, press the \"help\" button\n" +
+                "Well, that's all for now. Good luck adventurer, and may the gods of trash watch over you!";
+        return string;
     }
 
     private int processCommand(Command command) {
@@ -101,7 +95,7 @@ public class Game {
         } else if (commandWord == CommandWord.GO) {
             goRoom(command);
         } else if (commandWord == commandWord.RESTART) {
-            wantToQuit = restart(command);
+            //wantToQuit = restart(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
@@ -117,13 +111,13 @@ public class Game {
         else if (commandWord == CommandWord.OPENINVENTORY) {
             player.openInventory(command);
         }
+        /*
         else if (commandWord == CommandWord.SEARCH) {
             player.search();
         }
         else if (commandWord == CommandWord.DROP) {
             //player.dropItem(command);
         }
-        /*
         else if (commandWord == CommandWord.HANDBOOK) {
             handbook();
         }
@@ -150,12 +144,17 @@ public class Game {
         }
     }
 
-    private int restart(Command command) {
-        if (command.hasSecondWord()) {
-            System.out.println("Restart what?");
-            return 0;
-        } else {
-            return 1;
+    public void restart(TextArea textArea) {
+        if (wantsToRestart == true) {
+            textArea.setText("Restarting game");
+            play("Tobber00");
+            wantsToRestart = false;
+        }
+        else {
+            textArea.setText("Are you sure you want to restart?\n" +
+                    "Press the \"restart\" button again if you do\n" +
+                    "Press the \"help\" button if you don't");
+            wantsToRestart = true;
         }
     }
 
@@ -168,15 +167,18 @@ public class Game {
         }
     }
 
-    public static Room getCurrentRoom() {
+    
+    public Room getCurrentRoom() {
         return currentRoom;
     }
 
-    public static Player getPlayer() {
+    public Player getPlayer() {
         return player;
     }
+     
 
-    public static String getHelp() {
+    public String getHelp() {
+        wantsToRestart = false;
         String string = "Welcome to the world of TRASH! \n" +
                 "A trash collecting/sorting game \n" +
                 "You can walk around the world using \"W, A, S, D\"\n" +

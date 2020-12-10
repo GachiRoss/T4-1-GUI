@@ -6,16 +6,14 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("main_menu.fxml"));
         primaryStage.setTitle("World Of Trash");
-        primaryStage.setScene(new Scene(root, 1900, 1200));
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
-        Game game = new Game();
-        game.play();
         launch(args);
     }
 }

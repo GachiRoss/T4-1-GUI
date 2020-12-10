@@ -24,11 +24,12 @@ public class RecyclingCenter extends Room {
 
         coordinateSystem[11][11] = metalContainer;
     }
-
-    @Override
+    /*
     public Container[] getContainers() {
         return containers;
     }
+
+     */
     @Override
     public Object[][] getCoordinateSystem() {
         return coordinateSystem;

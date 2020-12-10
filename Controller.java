@@ -1,16 +1,35 @@
 import Room_related.MapObjekt;
-import com.sun.prism.Image;
+import Room_related.Trash;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+
+import java.io.IOException;
 
 
 public class Controller {
+
+    private Game game = new Game();
+
+    @FXML
+    private Parent gameLayout;
+
+    @FXML
+    private Scene scene;
+
+    @FXML
+    private ImageView room;
 
     @FXML
     private ListView inventory;
@@ -19,70 +38,79 @@ public class Controller {
     private TextArea textArea;
 
     @FXML
-    private Button help;
-
-    @FXML
-    private Button handbook;
-
-    @FXML
-    private Button restart;
-
-    @FXML
     private ImageView player;
+
+    public Controller() {
+        game.play("bob");
+    }
 
     @FXML
     void keyPressed(KeyEvent key) {
         switch (key.getCode().toString()) {
             case "W":
-                if (Game.getCurrentRoom().getCoordinateSystem()[Game.getPlayer().getX()][Game.getPlayer().getY() - 1] != MapObjekt.NONWALKABLE) {
-                    Game.getPlayer().setY(Game.getPlayer().getY() - 1);
-                    player.setY(player.getY() - 40);
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY() - 1] != MapObjekt.NONWALKABLE) {
+                    game.getPlayer().setY(game.getPlayer().getY() - 1);
+                    player.setY(game.getPlayer().getY() * 40);
                 }
                 break;
             case "S":
-                if (Game.getCurrentRoom().getCoordinateSystem()[Game.getPlayer().getX()][Game.getPlayer().getY() + 1] != MapObjekt.NONWALKABLE) {
-                    Game.getPlayer().setY(Game.getPlayer().getY() + 1);
-                    player.setY(player.getY() + 40);
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY() + 1] != MapObjekt.NONWALKABLE) {
+                    game.getPlayer().setY(game.getPlayer().getY() + 1);
+                    player.setY(game.getPlayer().getY() * 40);
                 }
                 break;
             case "A":
-                if (Game.getCurrentRoom().getCoordinateSystem()[Game.getPlayer().getX() - 1][Game.getPlayer().getY()] != MapObjekt.NONWALKABLE) {
-                    Game.getPlayer().setX(Game.getPlayer().getX() - 1);
-                    player.setX(player.getX() - 40);
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() - 1][game.getPlayer().getY()] != MapObjekt.NONWALKABLE) {
+                    game.getPlayer().setX(game.getPlayer().getX() - 1);
+                    player.setX(game.getPlayer().getX() * 40);
                 }
                 break;
             case "D":
-                if (Game.getCurrentRoom().getCoordinateSystem()[Game.getPlayer().getX() + 1][Game.getPlayer().getY()] != MapObjekt.NONWALKABLE) {
-                    Game.getPlayer().setX(Game.getPlayer().getX() + 1);
-                    player.setX(player.getX() + 40);
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()] != MapObjekt.NONWALKABLE) {
+                    game.getPlayer().setX(game.getPlayer().getX() + 1);
+                    player.setX(game.getPlayer().getX() * 40);
                 }
                 break;
             case "F":
-                if (Game.getPlayer().getInventoryList().size() < 5)
-                    inventory.getItems().add(Game.getPlayer().pickUp());
+                String trash = game.getPlayer().pickUp(game.getCurrentRoom());
+                if (game.getPlayer().getInventoryList().size() < 5 && trash != null) {
+                    inventory.getItems().add(trash);
+                }
                 break;
             case "G":
                 //skraldet bliver ved med at være der
-                ListView listView = Game.getPlayer().dropItem(inventory);
-                inventory = listView;
+                game.getPlayer().dropItem(inventory, game.getCurrentRoom());
                 break;
         }
-        System.out.println(Game.getPlayer().getX() + ", " + Game.getPlayer().getY());
     }
 
     @FXML
     void printHandbook(MouseEvent event) {
-        textArea.setText(Game.getPlayer().getHandbook());
+        textArea.setText(game.getPlayer().getHandbook());
     }
 
     @FXML
     void printHelp(MouseEvent event) {
-        textArea.setText(Game.getHelp());
+        textArea.setText(game.getHelp());
     }
 
     @FXML
     void restart(MouseEvent event) {
-        textArea.clear();
+        game.restart(textArea);
+        player.setY(game.getPlayer().getY() * 40);
+        player.setX(game.getPlayer().getX() * 40);
     }
+
+    //menu
+    @FXML
+    void startGame(MouseEvent event) throws IOException {
+        gameLayout = FXMLLoader.load(getClass().getResource("game.fxml"));
+        scene = new Scene(gameLayout, 1920, 1161);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+
 }
 
