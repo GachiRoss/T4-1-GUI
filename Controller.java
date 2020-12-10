@@ -1,3 +1,4 @@
+import Room_related.ChangeObjekt;
 import Room_related.MapObjekt;
 import Room_related.Trash;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -40,12 +42,15 @@ public class Controller {
     @FXML
     private ImageView player;
 
+    @FXML
+    private ImageView parkScene = new ImageView("park.jpg");
+
     public Controller() {
         game.play("bob");
     }
 
     @FXML
-    void keyPressed(KeyEvent key) {
+    void keyPressed(KeyEvent key) throws IOException {
         switch (key.getCode().toString()) {
             case "W":
                 if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY() - 1] != MapObjekt.NONWALKABLE) {
@@ -81,8 +86,17 @@ public class Controller {
                 //skraldet bliver ved med at være der
                 game.getPlayer().dropItem(inventory, game.getCurrentRoom());
                 break;
+            case "C":
+                //skifter til park.jpg //hvorfor bruger vi jpgs? Vil vi gerne have at det ligner billeder fra Sovjetunionen?
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(ChangeObjekt.SCENECHANGER));
+                gameLayout = FXMLLoader.load(getClass().getResource("park.fxml"));
+                scene = new Scene(gameLayout, 1920, 1161);
+                Stage window = (Stage) ((Node) key.getSource()).getScene().getWindow();
+                window.setScene(scene);
+                window.show();
         }
     }
+
 
     @FXML
     void printHandbook(MouseEvent event) {
@@ -106,11 +120,9 @@ public class Controller {
     void startGame(MouseEvent event) throws IOException {
         gameLayout = FXMLLoader.load(getClass().getResource("game.fxml"));
         scene = new Scene(gameLayout, 1920, 1161);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
     }
-
-
 }
 
