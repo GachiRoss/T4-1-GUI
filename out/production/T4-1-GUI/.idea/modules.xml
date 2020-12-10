@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/T4-1-GUI.iml" filepath="$PROJECT_DIR$/T4-1-GUI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commands/commands.iml" filepath="$PROJECT_DIR$/commands/commands.iml" />
     </modules>
   </component>
 </project>
