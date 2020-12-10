@@ -50,15 +50,6 @@ public class Controller {
     }
 
     @FXML
-    void parkScene(KeyEvent event) throws IOException {
-        gameLayout = FXMLLoader.load(getClass().getResource("park.fxml"));
-        scene = new Scene(gameLayout, 1920, 1161);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-    }
-
-    @FXML
     void keyPressed(KeyEvent key) throws IOException {
         switch (key.getCode().toString()) {
             case "W":
@@ -95,8 +86,17 @@ public class Controller {
                 //skraldet bliver ved med at være der
                 game.getPlayer().dropItem(inventory, game.getCurrentRoom());
                 break;
+            case "C":
+                //skifter til park.jpg //hvorfor bruger vi jpgs? Vil vi gerne have at det ligner billeder fra Sovjetunionen?
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(ChangeObjekt.SCENECHANGER));
+                gameLayout = FXMLLoader.load(getClass().getResource("park.fxml"));
+                scene = new Scene(gameLayout, 1920, 1161);
+                Stage window = (Stage) ((Node) key.getSource()).getScene().getWindow();
+                window.setScene(scene);
+                window.show();
         }
     }
+
 
     @FXML
     void printHandbook(MouseEvent event) {
