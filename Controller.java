@@ -88,12 +88,12 @@ public class Controller {
                 if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(MapObjekt.NONWALKABLE))
                     ;
                 gameLayout = FXMLLoader.load(getClass().getResource("park.fxml"));
-                scene = new Scene(gameLayout, 1920, 1161);
+                scene = new Scene(gameLayout, 1600, 900);
                 Stage window = (Stage) ((Node) key.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
                 break;
-            case "H":
+           /* case "H":
                 if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(MapObjekt.NONWALKABLE)) ;
                 //har bare kaldt værdien if statementen leder efter for changeObjectID. Kan ikke komme på andet den skal lede efter
                     if (changeObjectID = 1) {
@@ -123,7 +123,7 @@ public class Controller {
                     if (changeObjectID = 7) {
                         ImageView conCenter = new ImageView();
                         conCenter.setImage(new Image("conCenter.jpg"));
-                    }
+                    }*/
         }
     }
 
@@ -148,7 +148,7 @@ public class Controller {
     @FXML
     void startGame(MouseEvent event) throws IOException {
         gameLayout = FXMLLoader.load(getClass().getResource("game.fxml"));
-        scene = new Scene(gameLayout, 1920, 1161);
+        scene = new Scene(gameLayout, 1600, 800);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
