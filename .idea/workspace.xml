@@ -19,7 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a27f3c-14e2-456b-9729-9abf6e93a6da" name="Default Changelist" comment="" />
+    <list default="true" id="58a27f3c-14e2-456b-9729-9abf6e93a6da" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Room_related/ChangeObjekt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Room_related/MapObjekt.java" beforeDir="false" afterPath="$PROJECT_DIR$/Room_related/MapObjekt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/T4-1-GUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/T4-1-GUI.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,18 +37,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-14.0.1/lib/src.zip!/jdk.hotspot.agent/sun/jvm/hotspot/utilities/soql/MapScriptObject.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1kgnAuT6OkYFFXm2S4uE2PwFRSB" />
   <component name="ProjectViewState">
@@ -49,12 +55,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -118,8 +128,7 @@
     <state width="1167" height="209" key="GridCell.Tab.0.bottom/0.22.1440.829@0.22.1440.829" timestamp="1606818415342" />
     <state width="1394" height="151" key="GridCell.Tab.0.bottom/0.22.1440.830@0.22.1440.830" timestamp="1606919342133" />
     <state width="1394" height="151" key="GridCell.Tab.0.bottom/0.22.1440.831@0.22.1440.831" timestamp="1606918819241" />
-    <state width="2517" height="315" key="GridCell.Tab.0.center" timestamp="1607615057183">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <screen x="0" y="0" width="2560" height="1400" />
     <state width="1394" height="151" key="GridCell.Tab.0.center" timestamp="1606919804121">
       <screen x="0" y="22" width="1440" height="829" />
     </state>
