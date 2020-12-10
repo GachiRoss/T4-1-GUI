@@ -1,13 +1,10 @@
-import Room_related.ChangeObjekt;
 import Room_related.MapObjekt;
-import Room_related.Trash;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -88,7 +85,7 @@ public class Controller {
                 break;
             case "C":
                 //skifter til park.jpg //hvorfor bruger vi jpgs? Vil vi gerne have at det ligner billeder fra Sovjetunionen?
-                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(ChangeObjekt.SCENECHANGER))
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(MapObjekt.NONWALKABLE))
                     ;
                 gameLayout = FXMLLoader.load(getClass().getResource("park.fxml"));
                 scene = new Scene(gameLayout, 1920, 1161);
