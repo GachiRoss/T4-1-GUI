@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+
 import command.*;
 import Room_related.*;
 import javafx.scene.control.ListView;
@@ -80,9 +80,9 @@ public class Player {
     //method for allowing the player to search for trash in a room
     public void search(Room room) {
         //uses a for loop to iterate through the trash arraylist for the current room. Calls the getCurrentRoom method from the Game class
-        for (int i = 0; i < room.trash.size(); i++) {
+        for (int i = 0; i < room.getTrashArrayList().size(); i++) {
             //prints out the trash objects in the arraylist via the for loop
-            System.out.println(room.trash.get(i).getName());
+            System.out.println(room.getTrashArrayList().get(i).getName());
         }
     }
 

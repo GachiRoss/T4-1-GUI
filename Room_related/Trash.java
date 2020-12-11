@@ -8,13 +8,11 @@ public class Trash {
     private int y;
 
     // Constructor: objects (trash) are made here
-    public Trash (/*String material,*/ String name, TrashType trashType, int x, int y){
-        /*this.material = material;*/
+    public Trash (String name, TrashType trashType, int x, int y){
         this.name = name;
         this.trashType = trashType;
         this.x = x;
         this.y = y;
-        // without constructor here we can't create trash objects in Room
     }
 
     public String getName()
@@ -26,15 +24,12 @@ public class Trash {
         return trashType;
     }
 
-    /*public String getMaterial() {
-        return material;
-    }*/
 
-    /*public int getX() {
+    public int getX() {
         return x;
     }
 
     public int getY() {
         return y;
-    }*/
+    }
 }

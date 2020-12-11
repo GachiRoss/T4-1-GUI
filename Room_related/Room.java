@@ -8,40 +8,18 @@ public class Room {
     private String description;
 
     // Trash instance variable:
-    public ArrayList<Trash> trash = new ArrayList<Trash>(5); // creates an ArrayList
+    private ArrayList<Trash> trashArrayList; // creates an ArrayList
     private HashMap<String, Room> exits; //?
     private Object[][] coordinateSystem;
     private Random random = new Random();
 
-    /*
-    private Trash can = new Trash( "can", TrashType.METAL);
-    private Trash battery = new Trash( "battery", TrashType.HAZARDOUSWASTE);
-    private Trash pizzaBox = new Trash( "pizzaBox", TrashType.RESIDUALWASTE);
-    private Trash plasticBag = new Trash( "plasticBag", TrashType.PLASTIC);
-    private Trash porcelainPlate = new Trash( "porcelainPlate", TrashType.HAZARDOUSWASTE);
-
-     */
-
-
-    // Constructor: adds trash objects of Trash to ArrayList trash
-
-
-    public Room(String description)
+    public Room(String description, Object[][] coordinateSystem)
     {
         this.description = description;
         exits = new HashMap<String, Room>();
 
-        coordinateSystem = new Object[29][29];
-
-        /*
-        coordinateSystem[10][10] = battery;
-        coordinateSystem[5][5] = can;
-        coordinateSystem[7][8] = pizzaBox;
-        coordinateSystem[3][20] = plasticBag;
-        coordinateSystem[20][20] = porcelainPlate;
-
-         */
-
+        this.coordinateSystem = coordinateSystem;
+        trashArrayList = new ArrayList<Trash>(5);
 
     }
 
@@ -116,21 +94,21 @@ public class Room {
                         break;
 
                     default:
-                        trashType = TrashType.METAL;
+                        trashType = TrashType.ERROR;
                 }
-                trash = new Trash(trashArray[type][name], trashType);
+                trash = new Trash(trashArray[type][name], trashType, x, y);
 
                 if (coordinateSystem[x][y] == null) {
-                    Object[][] newCoordinateSystem = coordinateSystem;
-                    newCoordinateSystem[x][y] = trash;
-
-                    coordinateSystem = newCoordinateSystem;
+                    trashArrayList.add(trash);
                 }
                 else {
                     i--;
                 }
-                System.out.println(trash.getName());
             }
         }
+    }
+
+    public ArrayList<Trash> getTrashArrayList() {
+        return trashArrayList;
     }
 }

@@ -1,6 +1,9 @@
 import command.*;
 import Room_related.*;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 public class Game {
     // Der erklæres to variabler
@@ -19,15 +22,16 @@ public class Game {
     // metode
     private void createRooms()
     {
+        Object[][] coordinateSystemPlaceHolder = new Object[29][29];
         Room park, beach, street, conSite, forest, home, reCenter;
         // rum dannes som objekter
-        park = new Room("You've reached the park... refreshing.");
-        beach = new Room("You've reached the beach. Lots of sand... everywhere!");
-        street = new Room("You're walking through the street. Ahh the sweet smell of... pollution?");
-        conSite = new Room("At a construction site. Construction will eventually resume at an unspecified time in the future.");
-        forest = new Room("You've reached the forest. Everyone's favourite place to be!");
-        home = new Room("You're at home. Smells kinda funny in here.");
-        reCenter = new RecyclingCenter("You're at the recycling center. The place where you... well... SORT YOUR TRASH!!");
+        park = new Room("You've reached the park... refreshing.", coordinateSystemPlaceHolder);
+        beach = new Room("You've reached the beach. Lots of sand... everywhere!", coordinateSystemPlaceHolder);
+        street = new Room("You're walking through the street. Ahh the sweet smell of... pollution?", coordinateSystemPlaceHolder);
+        conSite = new Room("At a construction site. Construction will eventually resume at an unspecified time in the future.", coordinateSystemPlaceHolder);
+        forest = new Room("You've reached the forest. Everyone's favourite place to be!", coordinateSystemPlaceHolder);
+        home = new Room("You're at home. Smells kinda funny in here.", coordinateSystemPlaceHolder);
+        reCenter = new RecyclingCenter("You're at the recycling center. The place where you... well... SORT YOUR TRASH!!", coordinateSystemPlaceHolder);
 
         //exits til rummene erklæres via metoden setExit
         home.setExit("south", forest);
@@ -183,6 +187,23 @@ public class Game {
                 "And collect trash using the \"F\" key, and sort it at a container using the \"G\" key \n" +
                 "You get a point by sorting the trash correctly, but lose one if you sort it incorrectly \n";
         return string;
+    }
+
+    public void loadTrash(ImageView[] trashImages) {
+        for (int i = 0; i < currentRoom.getTrashArrayList().size(); i++) {
+            trashImages[i].setImage(new Image(currentRoom.getTrashArrayList().get(i).getName() + ".jpg"));
+            trashImages[i].setX(currentRoom.getTrashArrayList().get(i).getX() * 40);
+            trashImages[i].setY(currentRoom.getTrashArrayList().get(i).getY() * 40);
+        }
+        int dif = trashImages.length - currentRoom.getTrashArrayList().size();
+        if (dif != 0) {
+            for (int i = trashImages.length - 1; i > dif; i--) {
+                trashImages[i].setImage(new Image("empty.jpg"));
+                trashImages[i].setX(0);
+                trashImages[i].setY(0);
+            }
+        }
+
     }
 
 }
