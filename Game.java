@@ -2,8 +2,6 @@ import command.*;
 import Room_related.*;
 import javafx.scene.control.TextArea;
 
-import java.util.Random;
-
 public class Game {
     // Der erklæres to variabler
     private Parser parser;

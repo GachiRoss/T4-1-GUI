@@ -51,13 +51,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$" />
-<<<<<<< Updated upstream
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib" />
-    <property name="project.structure.last.edited" value="Libraries" />
-=======
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/T4-1-GUI" />
     <property name="project.structure.last.edited" value="Modules" />
->>>>>>> Stashed changes
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
@@ -111,70 +106,46 @@
     <state x="369" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1440.829@0.22.1440.829" timestamp="1606818113026" />
     <state x="211" y="145" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1440.830@0.22.1440.830" timestamp="1606914798492" />
     <state x="211" y="145" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1440.831@0.22.1440.831" timestamp="1606914602979" />
-<<<<<<< Updated upstream
+    <state x="369" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1440.833@0.22.1440.833" timestamp="1607612526265" />
+    <state x="369" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1440.834@0.22.1440.834" timestamp="1607612687277" />
     <state x="331" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607610235035">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="331" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607610235035" />
-=======
-    <state x="369" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1440.833@0.22.1440.833" timestamp="1607612526265" />
-    <state x="369" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1440.834@0.22.1440.834" timestamp="1607612687277" />
->>>>>>> Stashed changes
-    <state x="788" y="261" key="FileChooserDialogImpl" timestamp="1607089160494">
+    <state x="788" y="261" key="FileChooserDialogImpl" timestamp="1607691218424">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="473" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606133202545" />
-    <state x="788" y="261" key="FileChooserDialogImpl/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607089160494" />
-<<<<<<< Updated upstream
-    <state width="2517" height="315" key="GridCell.Tab.0.bottom" timestamp="1607615057183">
-      <screen x="0" y="0" width="2560" height="1400" />
-=======
+    <state x="788" y="261" key="FileChooserDialogImpl/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607691218424" />
     <state width="1394" height="151" key="GridCell.Tab.0.bottom" timestamp="1607612691374">
       <screen x="0" y="22" width="1440" height="834" />
->>>>>>> Stashed changes
     </state>
     <state width="2517" height="315" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607615395643" />
     <state width="1167" height="209" key="GridCell.Tab.0.bottom/0.22.1440.829@0.22.1440.829" timestamp="1606818415342" />
     <state width="1394" height="151" key="GridCell.Tab.0.bottom/0.22.1440.830@0.22.1440.830" timestamp="1606919342133" />
     <state width="1394" height="151" key="GridCell.Tab.0.bottom/0.22.1440.831@0.22.1440.831" timestamp="1606918819241" />
-<<<<<<< Updated upstream
-    <screen x="0" y="0" width="2560" height="1400" />
-    <state width="1394" height="151" key="GridCell.Tab.0.center" timestamp="1606919804121">
-      <screen x="0" y="22" width="1440" height="829" />
-=======
     <state width="1394" height="151" key="GridCell.Tab.0.bottom/0.22.1440.833@0.22.1440.833" timestamp="1607612581487" />
     <state width="1394" height="151" key="GridCell.Tab.0.bottom/0.22.1440.834@0.22.1440.834" timestamp="1607612691374" />
     <state width="1394" height="151" key="GridCell.Tab.0.center" timestamp="1607612691373">
       <screen x="0" y="22" width="1440" height="834" />
->>>>>>> Stashed changes
     </state>
     <state width="2517" height="315" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607615395643" />
     <state width="1167" height="209" key="GridCell.Tab.0.center/0.22.1440.829@0.22.1440.829" timestamp="1606818415340" />
     <state width="1394" height="151" key="GridCell.Tab.0.center/0.22.1440.830@0.22.1440.830" timestamp="1606919342131" />
     <state width="1394" height="151" key="GridCell.Tab.0.center/0.22.1440.831@0.22.1440.831" timestamp="1606918819238" />
-<<<<<<< Updated upstream
-    <state width="2517" height="315" key="GridCell.Tab.0.left" timestamp="1607615057183">
-      <screen x="0" y="0" width="2560" height="1400" />
-=======
     <state width="1394" height="151" key="GridCell.Tab.0.center/0.22.1440.833@0.22.1440.833" timestamp="1607612581485" />
     <state width="1394" height="151" key="GridCell.Tab.0.center/0.22.1440.834@0.22.1440.834" timestamp="1607612691373" />
     <state width="1394" height="151" key="GridCell.Tab.0.left" timestamp="1607612691372">
       <screen x="0" y="22" width="1440" height="834" />
->>>>>>> Stashed changes
     </state>
     <state width="2517" height="315" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607615395642" />
     <state width="1167" height="209" key="GridCell.Tab.0.left/0.22.1440.829@0.22.1440.829" timestamp="1606818415340" />
     <state width="1394" height="151" key="GridCell.Tab.0.left/0.22.1440.830@0.22.1440.830" timestamp="1606919342129" />
     <state width="1394" height="151" key="GridCell.Tab.0.left/0.22.1440.831@0.22.1440.831" timestamp="1606918819236" />
-<<<<<<< Updated upstream
-    <state width="2517" height="315" key="GridCell.Tab.0.right" timestamp="1607615057183">
-      <screen x="0" y="0" width="2560" height="1400" />
-=======
     <state width="1394" height="151" key="GridCell.Tab.0.left/0.22.1440.833@0.22.1440.833" timestamp="1607612581484" />
     <state width="1394" height="151" key="GridCell.Tab.0.left/0.22.1440.834@0.22.1440.834" timestamp="1607612691372" />
     <state width="1394" height="151" key="GridCell.Tab.0.right" timestamp="1607612691373">
       <screen x="0" y="22" width="1440" height="834" />
->>>>>>> Stashed changes
     </state>
     <state width="2517" height="315" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607615395643" />
     <state width="1167" height="209" key="GridCell.Tab.0.right/0.22.1440.829@0.22.1440.829" timestamp="1606818415341" />
