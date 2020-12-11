@@ -1,13 +1,10 @@
-import Room_related.ChangeObjekt;
 import Room_related.MapObjekt;
-import Room_related.Trash;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -42,8 +39,8 @@ public class Controller {
     @FXML
     private ImageView player;
 
-    @FXML
-    private ImageView parkScene = new ImageView("park.jpg");
+    //@FXML
+    //private ImageView parkScene = new ImageView("park.jpg");
 
     public Controller() {
         game.play("bob");
@@ -88,15 +85,47 @@ public class Controller {
                 break;
             case "C":
                 //skifter til park.jpg //hvorfor bruger vi jpgs? Vil vi gerne have at det ligner billeder fra Sovjetunionen?
-                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(ChangeObjekt.SCENECHANGER));
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(MapObjekt.NONWALKABLE))
+                    ;
                 gameLayout = FXMLLoader.load(getClass().getResource("park.fxml"));
                 scene = new Scene(gameLayout, 1920, 1161);
                 Stage window = (Stage) ((Node) key.getSource()).getScene().getWindow();
                 window.setScene(scene);
                 window.show();
+                break;
+            case "H":
+                if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(MapObjekt.NONWALKABLE)) ;
+                //har bare kaldt værdien if statementen leder efter for changeObjectID. Kan ikke komme på andet den skal lede efter
+                    if (changeObjectID = 1) {
+                        ImageView street = new ImageView();
+                        street.setImage(new Image("street.jpg"));
+                    }
+                    if (changeObjectID = 2) {
+                        ImageView park = new ImageView();
+                        park.setImage(new Image("park.jpg"));
+                    }
+                    if (changeObjectID = 3) {
+                        ImageView recCenter = new ImageView();
+                        recCenter.setImage(new Image("recCenter.jpg"));
+                    }
+                    if (changeObjectID = 4) {
+                        ImageView beach = new ImageView();
+                        beach.setImage(new Image("beach.jpg"));
+                    }
+                    if (changeObjectID = 5) {
+                        ImageView forest = new ImageView();
+                        forest.setImage(new Image("forest.jpg"));
+                    }
+                    if (changeObjectID = 6) {
+                        ImageView home = new ImageView();
+                        home.setImage(new Image("home.jpg"));
+                    }
+                    if (changeObjectID = 7) {
+                        ImageView conCenter = new ImageView();
+                        conCenter.setImage(new Image("conCenter.jpg"));
+                    }
         }
     }
-
 
     @FXML
     void printHandbook(MouseEvent event) {
