@@ -4,5 +4,6 @@ public enum TrashType {
     METAL,
     HAZARDOUSWASTE,
     RESIDUALWASTE,
-    PLASTIC
+    PLASTIC,
+    ERROR
 }

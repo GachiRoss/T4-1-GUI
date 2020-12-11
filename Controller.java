@@ -39,6 +39,23 @@ public class Controller {
     @FXML
     private ImageView player;
 
+    @FXML
+    private ImageView trash1;
+
+    @FXML
+    private ImageView trash2;
+
+    @FXML
+    private ImageView trash3;
+
+    @FXML
+    private ImageView trash4;
+
+    @FXML
+    private ImageView trash5;
+
+    private ImageView[] trashImages = {trash1, trash2, trash3, trash4, trash5};
+
     //@FXML
     //private ImageView parkScene = new ImageView("park.jpg");
 
@@ -83,6 +100,7 @@ public class Controller {
                 //skraldet bliver ved med at være der
                 game.getPlayer().dropItem(inventory, game.getCurrentRoom());
                 break;
+                /*
             case "C":
                 //skifter til park.jpg //hvorfor bruger vi jpgs? Vil vi gerne have at det ligner billeder fra Sovjetunionen?
                 if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(MapObjekt.NONWALKABLE))
@@ -142,6 +160,7 @@ public class Controller {
         game.restart(textArea);
         player.setY(game.getPlayer().getY() * 40);
         player.setX(game.getPlayer().getX() * 40);
+        game.loadTrash(trashImages);
     }
 
     //menu
@@ -152,6 +171,7 @@ public class Controller {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
+        game.loadTrash(trashImages);
     }
 }
 

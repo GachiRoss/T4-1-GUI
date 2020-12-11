@@ -59,14 +59,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$" />
-<<<<<<< Updated upstream
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/T4-1-GUI" />
-=======
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib" />
-    <property name="project.structure.last.edited" value="Libraries" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib" />
->>>>>>> Stashed changes
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
@@ -127,11 +121,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="331" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607610235035" />
-    <state x="788" y="261" key="FileChooserDialogImpl" timestamp="1607691218424">
+    <state x="788" y="261" key="FileChooserDialogImpl" timestamp="1607691584347">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="473" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606133202545" />
-    <state x="788" y="261" key="FileChooserDialogImpl/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607691218424" />
+    <state x="788" y="261" key="FileChooserDialogImpl/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607691584347" />
     <state width="1394" height="151" key="GridCell.Tab.0.bottom" timestamp="1607612691374">
       <screen x="0" y="22" width="1440" height="834" />
     </state>
@@ -168,11 +162,11 @@
     <state width="1394" height="151" key="GridCell.Tab.0.right/0.22.1440.831@0.22.1440.831" timestamp="1606918819240" />
     <state width="1394" height="151" key="GridCell.Tab.0.right/0.22.1440.833@0.22.1440.833" timestamp="1607612581485" />
     <state width="1394" height="151" key="GridCell.Tab.0.right/0.22.1440.834@0.22.1440.834" timestamp="1607612691373" />
-    <state x="416" y="22" width="1024" height="834" key="SettingsEditor" timestamp="1607612660496">
-      <screen x="0" y="22" width="1440" height="834" />
+    <state x="983" y="387" width="1024" height="834" key="SettingsEditor" timestamp="1607691587067">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606133207496" />
-    <state x="983" y="387" key="SettingsEditor/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607521777733" />
+    <state x="983" y="387" key="SettingsEditor/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1607691587067" />
     <state x="86" y="22" width="1024" height="831" key="SettingsEditor/0.22.1440.831@0.22.1440.831" timestamp="1606914746481" />
     <state x="107" y="24" key="SettingsEditor/0.22.1440.833@0.22.1440.833" timestamp="1607612572312" />
     <state x="416" y="22" width="1024" height="834" key="SettingsEditor/0.22.1440.834@0.22.1440.834" timestamp="1607612660496" />

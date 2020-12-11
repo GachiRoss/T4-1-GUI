@@ -22,6 +22,11 @@
                   <Image url="@player.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="trash1" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="trash2" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="trash3" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="trash4" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="trash5" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
          </children></AnchorPane>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="127.0">
          <children>
