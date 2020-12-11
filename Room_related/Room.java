@@ -70,8 +70,8 @@ public class Room {
             Trash trash;
             String[][] trashArray = {{"can","aluminium foil"},{"battery", "syringe"},{"pizza box", "milk carton"},{"plastic bag", "plastic bottle"}};
 
-            int x = random.nextInt(29);
-            int y = random.nextInt(29);
+            int x = random.nextInt(28);
+            int y = random.nextInt(28);
 
             int type = random.nextInt(4);
             int name = random.nextInt(trashArray[type].length);
@@ -98,6 +98,7 @@ public class Room {
                 }
                 trash = new Trash(trashArray[type][name], trashType, x, y);
 
+                System.out.println(x + ", " + y);
                 if (coordinateSystem[x][y] == null) {
                     trashArrayList.add(trash);
                 }
