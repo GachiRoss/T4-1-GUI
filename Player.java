@@ -7,8 +7,8 @@ import javafx.scene.control.ListView;
 public class Player {
     // The player:
     private int points;
-    private int x;
-    private int y;
+    private int x = 14;
+    private int y = 14;
 
     private String name;
 

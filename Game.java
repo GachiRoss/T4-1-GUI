@@ -13,7 +13,10 @@ public class Game {
     private Room currentRoom;
     private Player player;
     private boolean wantsToRestart = false;
-
+    private Container metalContainer = new Container("Metal Container", TrashType.METAL);
+    private Container hazardousContainer = new Container("Hazardous Container", TrashType.HAZARDOUSWASTE);
+    private Container residualContainer = new Container("Residual Container", TrashType.RESIDUALWASTE);
+    private Container plasticContainer = new Container("Plastic Container", TrashType.PLASTIC);
 
     // constructor - kører metode CreateRooms og laver et nyt objekt
     public Game() {
@@ -23,26 +26,26 @@ public class Game {
     // metode
     private void createRooms() {
         Object[][] coordinateSystemPlaceHolder = new Object[29][29];
-        Room park, beach, street, conSite, forest, home, reCenter;
+        Room park, beach, street, conSite, playGround, home, reCenter;
         // rum dannes som objekter
-        park = new Room("You've reached the park... refreshing.", coordinateSystemPlaceHolder);
-        beach = new Room("You've reached the beach. Lots of sand... everywhere!", coordinateSystemPlaceHolder);
-        street = new Room("You're walking through the street. Ahh the sweet smell of... pollution?", coordinateSystemPlaceHolder);
-        conSite = new Room("At a construction site. Construction will eventually resume at an unspecified time in the future.", coordinateSystemPlaceHolder);
-        forest = new Room("You've reached the forest. Everyone's favourite place to be!", coordinateSystemPlaceHolder);
-        home = new Room("You're at home. Smells kinda funny in here.", coordinateSystemPlaceHolder);
-        reCenter = new RecyclingCenter("You're at the recycling center. The place where you... well... SORT YOUR TRASH!!", coordinateSystemPlaceHolder);
+        park = new Room("You've reached the park... refreshing.", coordinateSystemPARK);
+        beach = new Room("You've reached the beach. Lots of sand... everywhere!", coordinateSystemBEACH);
+        street = new Room("You're walking through the street. Ahh the sweet smell of... pollution?", coordinateSystemStreet);
+        conSite = new Room("At a construction site. Construction will eventually resume at an unspecified time in the future.", coordinateSystemCONSTRUCTIONSITE);
+        playGround = new Room("You've reached the playGround. Everyone's favourite place to be!", coordinateSystemPLAYGROUND);
+        home = new Room("You're at home. Smells kinda funny in here.", coordinateSystemHOME);
+        reCenter = new RecyclingCenter("You're at the recycling center. The place where you... well... SORT YOUR TRASH!!", coordinateSystemRECYCLECENTER);
 
         //exits til rummene erklæres via metoden setExit
-        home.setExit("south", forest);
+        home.setExit("south", playGround);
 
-        forest.setExit("north", home);
-        forest.setExit("east", conSite);
-        forest.setExit("west", street);
+        playGround.setExit("north", home);
+        playGround.setExit("east", conSite);
+        playGround.setExit("west", street);
 
-        conSite.setExit("west", forest);
+        conSite.setExit("west", playGround);
 
-        street.setExit("east", forest);
+        street.setExit("east", playGround);
         street.setExit("west", beach);
         street.setExit("south", park);
         street.setExit("north", reCenter);
@@ -55,7 +58,7 @@ public class Game {
         reCenter.setExit("south", street);
 
         home.createTrash();
-        forest.createTrash();
+        playGround.createTrash();
         conSite.createTrash();
         beach.createTrash();
         street.createTrash();
@@ -208,100 +211,100 @@ public class Game {
     public void moveRoom(MapObjekt object, ImageView room, ImageView playerImage, ImageView[] trashImages) {
         switch (object) {
             //tjekker om spillers koordinater matcher med et portalObjekt, og tjekker hvilket for at se hvor spiller skal sendes hen
-            case PARKWEST:
-                playerImage.setX(29 * 40);
-                playerImage.setY(15 * 40);
+            case STREETWEST:
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
                 player.setX(29);
                 player.setY(15);
-                room.setImage(new Image("beach.jpg"));
+                room.setImage(new Image("beach.png"));
                 loadTrash(trashImages);
                 break;
             case BEACHEAST:
-                playerImage.setX(1 * 40);
-                playerImage.setY(15 * 40);
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
                 player.setX(1);
                 player.setY(15);
-                room.setImage(new Image("park.jpg"));
+                room.setImage(new Image("street.png"));
                 loadTrash(trashImages);
                 break;
             case PARKNORTH:
-                playerImage.setX(20 * 40);
-                playerImage.setY(1 * 40);
-                player.setX(20);
-                player.setY(1);
-                room.setImage(new Image("forest.jpg"));
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
+                player.setX(15);
+                player.setY(29);
+                room.setImage(new Image("street.png"));
                 loadTrash(trashImages);
                 break;
-            case PARKEAST:
-                playerImage.setX(1 * 40);
-                playerImage.setY(15 * 40);
+            case PLAYGROUNDEAST:
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
                 player.setX(1);
                 player.setY(15);
-                room.setImage(new Image("street.jpg"));
+                room.setImage(new Image("concenter.png"));
                 loadTrash(trashImages);
                 break;
             case STREETNORTH:
-                playerImage.setX(20 * 40);
-                playerImage.setY(1 * 40);
-                player.setX(20);
-                player.setY(1);
-                room.setImage(new Image("recenter.jpg"));
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
+                player.setX(15);
+                player.setY(19);
+                room.setImage(new Image("recenter.png"));
                 loadTrash(trashImages);
                 break;
             case STREETEAST:
-                playerImage.setX(1 * 40);
-                playerImage.setY(15 * 40);
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
                 player.setX(1);
                 player.setY(15);
-                room.setImage(new Image("concenter.jpg"));
+                room.setImage(new Image("playground.png"));
                 loadTrash(trashImages);
                 break;
-            case STREETWEST:
-                playerImage.setX(29 * 40);
-                playerImage.setY(15 * 40);
-                player.setX(1);
-                player.setY(15);
-                room.setImage(new Image("park.jpg"));
+            case HOMESOUTH:
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
+                player.setX(15);
+                player.setY(1);
+                room.setImage(new Image("playGround.png"));
                 loadTrash(trashImages);
                 break;
             case CONCENTERWEST:
-                playerImage.setX(1 * 40);
-                playerImage.setY(15 * 40);
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
                 player.setX(1);
                 player.setY(15);
-                room.setImage(new Image("street.jpg"));
+                room.setImage(new Image("playGround.png"));
                 loadTrash(trashImages);
                 break;
-            case FORESTSOUTH:
-                playerImage.setX(20 * 40);
-                playerImage.setY(40 * 40);
-                player.setX(20);
-                player.setY(40);
-                room.setImage(new Image("park.jpg"));
+            case PLAYGROUNDNORTH:
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
+                player.setX(15);
+                player.setY(29);
+                room.setImage(new Image("home.png"));
                 loadTrash(trashImages);
                 break;
-            case HOMENORTH:
-                playerImage.setX(20 * 40);
-                playerImage.setY(1 * 40);
-                player.setX(20);
-                player.setY(1);
-                room.setImage(new Image("street.jpg"));
+            case PLAYGROUNDWEST:
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
+                player.setX(29);
+                player.setY(15);
+                room.setImage(new Image("street.png"));
                 loadTrash(trashImages);
                 break;
             case RECCENTERSOUTH:
-                playerImage.setX(20 * 40);
-                playerImage.setY(40 * 40);
-                player.setX(20);
-                player.setY(40);
-                room.setImage(new Image("street.jpg"));
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
+                player.setX(15);
+                player.setY(1);
+                room.setImage(new Image("street.png"));
                 loadTrash(trashImages);
                 break;
             case STREETSOUTH:
-                playerImage.setX(20 * 40);
-                playerImage.setY(40 * 40);
-                player.setX(20);
-                player.setY(40);
-                room.setImage(new Image("home.jpg"));
+                playerImage.setX(29*40);
+                playerImage.setY(15*40);
+                player.setX(15);
+                player.setY(1);
+                room.setImage(new Image("park.png"));
                 loadTrash(trashImages);
                 break;
         }
@@ -334,15 +337,16 @@ public class Game {
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
-                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, s, s, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.HOMESOUTH, MapObjekt.HOMESOUTH, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE}
 
             };
+
     Object[][] coordinateSystemStreet =
             {
-                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, N, N, N, N, N, N, N, N, N, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.STREETNORTH, MapObjekt.STREETNORTH, MapObjekt.STREETNORTH, MapObjekt.STREETNORTH, MapObjekt.STREETNORTH, MapObjekt.STREETNORTH, MapObjekt.STREETNORTH, MapObjekt.STREETNORTH, MapObjekt.STREETNORTH, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
@@ -352,14 +356,14 @@ public class Game {
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
+                    {MapObjekt.STREETWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.STREETEAST},
+                    {MapObjekt.STREETWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.STREETEAST},
+                    {MapObjekt.STREETWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.STREETEAST},
+                    {MapObjekt.STREETWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.STREETEAST},
+                    {MapObjekt.STREETWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.STREETEAST},
+                    {MapObjekt.STREETWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.STREETEAST},
+                    {MapObjekt.STREETWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.STREETEAST},
+                    {MapObjekt.STREETWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.STREETEAST},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
@@ -370,7 +374,7 @@ public class Game {
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
-                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, S, S, S, S, S, S, S, S, S, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE}
+                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.STREETSOUTH, MapObjekt.STREETSOUTH, MapObjekt.STREETSOUTH, MapObjekt.STREETSOUTH, MapObjekt.STREETSOUTH, MapObjekt.STREETSOUTH, MapObjekt.STREETSOUTH, MapObjekt.STREETSOUTH, MapObjekt.STREETSOUTH, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE}
             };
     Object[][] coordinateSystemBEACH =
             {
@@ -386,9 +390,9 @@ public class Game {
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
+                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.BEACHEAST},
+                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.BEACHEAST},
+                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.BEACHEAST},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -406,7 +410,7 @@ public class Game {
             };
     Object[][] coordinateSystemPLAYGROUND =
             {
-                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, N, N, N, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.PLAYGROUNDNORTH, MapObjekt.PLAYGROUNDNORTH, MapObjekt.PLAYGROUNDNORTH, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
@@ -422,10 +426,9 @@ public class Game {
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
-                    {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
-                    {W, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, E},
+                    {MapObjekt.PLAYGROUNDWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.PLAYGROUNDEAST},
+                    {MapObjekt.PLAYGROUNDWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.PLAYGROUNDEAST},
+                    {MapObjekt.PLAYGROUNDWEST, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.PLAYGROUNDEAST},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
                     {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
@@ -452,12 +455,12 @@ public class Game {
             {MapObjekt.NONWALKABLE,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE},
             {MapObjekt.NONWALKABLE,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE},
             {MapObjekt.NONWALKABLE,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE},
-            {W,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE},
-            {W,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE},
-            {W,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
-            {W,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
-            {W,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
-            {W,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
+            {MapObjekt.CONCENTERWEST,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE},
+            {MapObjekt.CONCENTERWEST,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE},
+            {MapObjekt.CONCENTERWEST,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
+            {MapObjekt.CONCENTERWEST,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
+            {MapObjekt.CONCENTERWEST,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
+            {MapObjekt.CONCENTERWEST,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
             {MapObjekt.NONWALKABLE,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
             {MapObjekt.NONWALKABLE,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
             {MapObjekt.NONWALKABLE,null,null,null,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,MapObjekt.NONWALKABLE,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,MapObjekt.NONWALKABLE},
@@ -471,7 +474,7 @@ public class Game {
             };
 
     Object[][] coordinateSystemPARK = {
-            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, N, N, N, N, N, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, N, N, N, N, MapObjekt.NONWALKABLE, N, N, N, N, N, N, N, N, N, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.NONWALKABLE, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.PARKNORTH, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
             {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
             {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, MapObjekt.NONWALKABLE},
             {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null},
@@ -501,5 +504,37 @@ public class Game {
             {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
             {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE}
         };
+    Object[][] coordinateSystemRECYCLECENTER = {
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, hazardousContainer, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, plasticContainer, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE },
+            {MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, metalContainer, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, residualContainer, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, null, null, null, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE},
+            {MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.RECCENTERSOUTH, MapObjekt.RECCENTERSOUTH, MapObjekt.RECCENTERSOUTH, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE, MapObjekt.NONWALKABLE}
+
+    };
 }
 

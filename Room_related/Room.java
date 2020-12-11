@@ -98,6 +98,7 @@ public class Room {
                 }
                 trash = new Trash(trashArray[type][name], trashType, x, y);
 
+                System.out.println(x + ", " + y);
                 if (coordinateSystem[x][y] == null) {
                     trashArrayList.add(trash);
                 }

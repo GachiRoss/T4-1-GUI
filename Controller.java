@@ -171,7 +171,7 @@ public class Controller {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
-        game.loadTrash(trashImages);
+        //game.loadTrash(trashImages);
     }
 }
 
