@@ -5,13 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.stage.Stage;
 
-import javafx.scene.media.MediaPlayer;
-import javax.swing.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.nio.file.Paths;
-import javax.sound.sampled.AudioFileFormat;
 
 public class Main extends Application {
     @Override
@@ -22,28 +16,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-/*
-    public static void music(){
-        Media s= new Media("file///C://Users//acelu//Desktop//T4-1-GUI//ingameMusic.wav");
-        //String s= "Ingame music.mp3";
-        Media m = new Media(Paths.get(String.valueOf(s)).toUri().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(m);
-        mediaPlayer.play();
-    }
-*/
-   /* public static void playMusic(String filepath) {
-        InputStream music;
-        try {
-            music = new FileInputStream(new File(filepath));
-            AudioStream a = new AudioStream(music);
-            AudioPlayer.player.start(a);
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, "Error");
-        }
-    }
-*/
+   
 
     public static void main(String[] args) {
         launch(args);

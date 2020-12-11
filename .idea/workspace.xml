@@ -20,7 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a27f3c-14e2-456b-9729-9abf6e93a6da" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/T4-1-GUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/T4-1-GUI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/T4-1-GUI/.idea/libraries/lib1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/T4-1-GUI/.idea/libraries/lib1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/T4-1-GUI/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/T4-1-GUI/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/T4-1-GUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/T4-1-GUI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/T4-1-GUI/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/T4-1-GUI/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/T4-1-GUI/Room_related/ChangeObjekt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/T4-1-GUI/T4-1-GUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/T4-1-GUI/T4-1-GUI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/T4-1-GUI/game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/T4-1-GUI/game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +50,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-14.0.1/lib/src.zip!/jdk.hotspot.agent/sun/jvm/hotspot/utilities/soql/MapScriptObject.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="ProjectId" id="1kgnAuT6OkYFFXm2S4uE2PwFRSB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -51,7 +59,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$" />
+<<<<<<< Updated upstream
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/T4-1-GUI" />
+=======
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib" />
+>>>>>>> Stashed changes
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -99,6 +113,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< Updated upstream
     <state x="369" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607612687277">
       <screen x="0" y="22" width="1440" height="834" />
     </state>
@@ -198,6 +213,36 @@
       <screen x="0" y="22" width="1440" height="838" />
     </state>
     <state x="755" y="184" width="670" height="676" key="search.everywhere.popup/0.22.1440.838@0.22.1440.838" timestamp="1606341099428" />
+=======
+    <state x="164" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607635514554">
+      <screen x="0" y="22" width="1440" height="835" />
+    </state>
+    <state x="164" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.22.1440.835@0.22.1440.835" timestamp="1607635514554" />
+    <state width="1358" height="203" key="GridCell.Tab.0.bottom" timestamp="1607636314726">
+      <screen x="0" y="22" width="1440" height="833" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.bottom/0.22.1440.833@0.22.1440.833" timestamp="1607636314726" />
+    <state width="1358" height="203" key="GridCell.Tab.0.bottom/0.22.1440.835@0.22.1440.835" timestamp="1607635975713" />
+    <state width="1358" height="203" key="GridCell.Tab.0.center" timestamp="1607636314725">
+      <screen x="0" y="22" width="1440" height="833" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.center/0.22.1440.833@0.22.1440.833" timestamp="1607636314725" />
+    <state width="1358" height="203" key="GridCell.Tab.0.center/0.22.1440.835@0.22.1440.835" timestamp="1607635975711" />
+    <state width="1358" height="203" key="GridCell.Tab.0.left" timestamp="1607636314724">
+      <screen x="0" y="22" width="1440" height="833" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.left/0.22.1440.833@0.22.1440.833" timestamp="1607636314724" />
+    <state width="1358" height="203" key="GridCell.Tab.0.left/0.22.1440.835@0.22.1440.835" timestamp="1607635975704" />
+    <state width="1358" height="203" key="GridCell.Tab.0.right" timestamp="1607636314726">
+      <screen x="0" y="22" width="1440" height="833" />
+    </state>
+    <state width="1358" height="203" key="GridCell.Tab.0.right/0.22.1440.833@0.22.1440.833" timestamp="1607636314726" />
+    <state width="1358" height="203" key="GridCell.Tab.0.right/0.22.1440.835@0.22.1440.835" timestamp="1607635975712" />
+    <state x="188" y="22" key="SettingsEditor" timestamp="1607634221996">
+      <screen x="0" y="22" width="1440" height="836" />
+    </state>
+    <state x="188" y="22" key="SettingsEditor/0.22.1440.836@0.22.1440.836" timestamp="1607634221996" />
+>>>>>>> Stashed changes
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
