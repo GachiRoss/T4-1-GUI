@@ -4,6 +4,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.Map;
+
 
 public class Game {
     // Der erklæres to variabler
@@ -169,7 +171,7 @@ public class Game {
         }
     }
 
-    
+
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -177,7 +179,7 @@ public class Game {
     public Player getPlayer() {
         return player;
     }
-     
+
 
     public String getHelp() {
         wantsToRestart = false;
@@ -189,21 +191,122 @@ public class Game {
         return string;
     }
 
+
     public void loadTrash(ImageView[] trashImages) {
         for (int i = 0; i < currentRoom.getTrashArrayList().size(); i++) {
-            trashImages[i].setImage(new Image(currentRoom.getTrashArrayList().get(i).getName() + ".jpg"));
+            trashImages[i].setImage(new Image(currentRoom.getTrashArrayList().get(i).getName() + ".png"));
             trashImages[i].setX(currentRoom.getTrashArrayList().get(i).getX() * 40);
             trashImages[i].setY(currentRoom.getTrashArrayList().get(i).getY() * 40);
         }
         int dif = trashImages.length - currentRoom.getTrashArrayList().size();
         if (dif != 0) {
             for (int i = trashImages.length - 1; i > dif; i--) {
-                trashImages[i].setImage(new Image("empty.jpg"));
+                trashImages[i].setImage(new Image("empty.png"));
                 trashImages[i].setX(0);
                 trashImages[i].setY(0);
             }
         }
 
     }
-
+    public void moveRoom(MapObjekt object, ImageView room, ImageView playerImage, ImageView[] trashImages) {
+        switch (object) {
+            //tjekker om spillers koordinater matcher med et portalObjekt, og tjekker hvilket for at se hvor spiller skal sendes hen
+            case PARKWEST:
+                playerImage.setX(29 * 40);
+                playerImage.setY(15 * 40);
+                player.setX(29);
+                player.setY(15);
+                room.setImage(new Image("beach.jpg"));
+                loadTrash(trashImages);
+                break;
+            case BEACHEAST:
+                playerImage.setX(1 * 40);
+                playerImage.setY(15 * 40);
+                player.setX(1);
+                player.setY(15);
+                room.setImage(new Image("park.jpg"));
+                loadTrash(trashImages);
+                break;
+            case PARKNORTH:
+                playerImage.setX(20 * 40);
+                playerImage.setY(1 * 40);
+                player.setX(20);
+                player.setY(1);
+                room.setImage(new Image("forest.jpg"));
+                loadTrash(trashImages);
+                break;
+            case PARKEAST:
+                playerImage.setX(1 * 40);
+                playerImage.setY(15 * 40);
+                player.setX(1);
+                player.setY(15);
+                room.setImage(new Image("street.jpg"));
+                loadTrash(trashImages);
+                break;
+            case STREETNORTH:
+                playerImage.setX(20 * 40);
+                playerImage.setY(1 * 40);
+                player.setX(20);
+                player.setY(1);
+                room.setImage(new Image("recenter.jpg"));
+                loadTrash(trashImages);
+                break;
+            case STREETEAST:
+                playerImage.setX(1 * 40);
+                playerImage.setY(15 * 40);
+                player.setX(1);
+                player.setY(15);
+                room.setImage(new Image("concenter.jpg"));
+                loadTrash(trashImages);
+                break;
+            case STREETWEST:
+                playerImage.setX(29 * 40);
+                playerImage.setY(15 * 40);
+                player.setX(1);
+                player.setY(15);
+                room.setImage(new Image("park.jpg"));
+                loadTrash(trashImages);
+                break;
+            case CONCENTERWEST:
+                playerImage.setX(1 * 40);
+                playerImage.setY(15 * 40);
+                player.setX(1);
+                player.setY(15);
+                room.setImage(new Image("street.jpg"));
+                loadTrash(trashImages);
+                break;
+            case FORESTSOUTH:
+                playerImage.setX(20 * 40);
+                playerImage.setY(40 * 40);
+                player.setX(20);
+                player.setY(40);
+                room.setImage(new Image("park.jpg"));
+                loadTrash(trashImages);
+                break;
+            case HOMENORTH:
+                playerImage.setX(20 * 40);
+                playerImage.setY(1 * 40);
+                player.setX(20);
+                player.setY(1);
+                room.setImage(new Image("street.jpg"));
+                loadTrash(trashImages);
+                break;
+            case RECCENTERSOUTH:
+                playerImage.setX(20 * 40);
+                playerImage.setY(40 * 40);
+                player.setX(20);
+                player.setY(40);
+                room.setImage(new Image("street.jpg"));
+                loadTrash(trashImages);
+                break;
+            case STREETSOUTH:
+                playerImage.setX(20 * 40);
+                playerImage.setY(40 * 40);
+                player.setX(20);
+                player.setY(40);
+                room.setImage(new Image("home.jpg"));
+                loadTrash(trashImages);
+                break;
+            }
+    }
 }
