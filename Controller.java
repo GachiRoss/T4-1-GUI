@@ -111,7 +111,7 @@ public class Controller {
                 window.setScene(scene);
                 window.show();
                 break;
-            /*case "H":
+            /* case "H":
                 if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()].equals(MapObjekt.NONWALKABLE)) ;
                 //har bare kaldt værdien if statementen leder efter for changeObjectID. Kan ikke komme på andet den skal lede efter
                     if (changeObjectID = 1) {

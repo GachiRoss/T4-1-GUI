@@ -2,3 +2,9 @@
 *.xml
 
 .idea/libraries/
+
+out/production/T4-1-GUI/game.fxml
+
+out/production/T4-1-GUI/park.fxml
+
+park.fxml
