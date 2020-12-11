@@ -70,24 +70,36 @@ public class Controller {
                 if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY() - 1] != MapObjekt.NONWALKABLE) {
                     game.getPlayer().setY(game.getPlayer().getY() - 1);
                     player.setY(game.getPlayer().getY() * 40);
+                    if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY()] instanceof MapObjekt){
+                        game.moveRoom((MapObjekt) game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY()], room , player , trashImages );
+                    }
                 }
                 break;
             case "S":
                 if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY() + 1] != MapObjekt.NONWALKABLE) {
                     game.getPlayer().setY(game.getPlayer().getY() + 1);
                     player.setY(game.getPlayer().getY() * 40);
+                    if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY()] instanceof MapObjekt){
+                        game.moveRoom((MapObjekt) game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY()], room , player , trashImages );
+                    }
                 }
                 break;
             case "A":
                 if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() - 1][game.getPlayer().getY()] != MapObjekt.NONWALKABLE) {
                     game.getPlayer().setX(game.getPlayer().getX() - 1);
                     player.setX(game.getPlayer().getX() * 40);
+                    if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY()] instanceof MapObjekt){
+                        game.moveRoom((MapObjekt) game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY()], room , player , trashImages );
+                    }
                 }
                 break;
             case "D":
                 if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX() + 1][game.getPlayer().getY()] != MapObjekt.NONWALKABLE) {
                     game.getPlayer().setX(game.getPlayer().getX() + 1);
                     player.setX(game.getPlayer().getX() * 40);
+                    if (game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY()] instanceof MapObjekt){
+                        game.moveRoom((MapObjekt) game.getCurrentRoom().getCoordinateSystem()[game.getPlayer().getX()][game.getPlayer().getY()], room , player , trashImages );
+                    }
                 }
                 break;
             case "F":
@@ -171,7 +183,7 @@ public class Controller {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
-        game.loadTrash(trashImages);
+        //game.loadTrash(trashImages);
     }
 }
 
